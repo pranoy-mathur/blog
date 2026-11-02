@@ -9,9 +9,9 @@
 
 // Palette (Gram and Leishman staining)
 $ink:       #21174B;  // body text, headings (crystal violet)
-$slide:     #F2F4F6;  // page ground
+$slide:     #EFEBF6;  // page ground (pale stained-slide lavender)
 $safranin:  #BF2A57;  // accent: at most one use per screen
-$buff:      #EAE3D2;  // section separation
+$buff:      #DCD5E8;  // section separation (dividing lines)
 $graphite:  #53606D;  // secondary text, metadata
 
 // Type
@@ -46,7 +46,7 @@ $brand-color-dark:      $ink;
 $site-title-color:      $ink;
 $text-color:            $ink;
 $background-color:      $slide;
-$code-background-color: #FBFAF6;
+$code-background-color: #FAF8FC;
 
 $link-base-color:    $ink;
 $link-visited-color: $ink;
@@ -57,7 +57,7 @@ $border-color-02: $graphite;
 $border-color-03: $ink;
 
 $table-text-color:      $ink;
-$table-zebra-color:     #EEF0F2;
+$table-zebra-color:     #E8E3F1;
 $table-header-bg-color: $buff;
 $table-header-border:   $graphite;
 $table-border-color:    $buff;
