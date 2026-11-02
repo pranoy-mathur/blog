@@ -1,0 +1,25 @@
+{%- comment -%}
+  The image beside a homepage section. Set in the section's front matter:
+    image:          path to a photo in this repo, e.g. /assets/images/sections/research.jpg
+    image_alt:      what the image shows
+    image_caption:  optional short caption
+    image_tint:     false to show the original colors (default: tinted to the site palette)
+  With image: "" a placeholder shows where the image will go.
+  Leave image out entirely for no image.
+{%- endcomment -%}
+{%- assign sf = include.section -%}
+{%- assign sf_file = nil -%}
+{%- if sf.image and sf.image != "" -%}
+  {%- assign sf_file = site.static_files | where: "path", sf.image | first -%}
+{%- endif -%}
+{%- if sf_file -%}
+<figure class="section-figure{% unless sf.image_tint == false %} is-tinted{% endunless %}">
+  <span class="section-figure-media"><img src="{{ sf.image | relative_url }}" alt="{{ sf.image_alt | escape }}" loading="lazy" decoding="async"></span>
+  {%- if sf.image_caption and sf.image_caption != "" -%}<figcaption>{{ sf.image_caption }}</figcaption>{%- endif -%}
+</figure>
+{%- else -%}
+<div class="section-figure slot slot-image">
+  <span class="slot-label">Section image</span>
+  <span class="slot-note">One of your own micrographs or bench photos. Set image: in this section's file.</span>
+</div>
+{%- endif -%}

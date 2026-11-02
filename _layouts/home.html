@@ -7,7 +7,7 @@ layout: base
 {%- assign home_sections = site.sections | sort: "order" -%}
 <div class="home">
   {%- for s in home_sections -%}
-  <section class="site-section{% if forloop.first %} is-first{% endif %}" id="{{ s.anchor }}" aria-labelledby="{{ s.anchor }}-title">
+  <section class="site-section{% if forloop.first %} is-first{% endif %}{% if s.image %} has-figure{% endif %}" id="{{ s.anchor }}" aria-labelledby="{{ s.anchor }}-title">
 
     {%- if s.kind == "blog" -%}
       <div class="statement-block">
@@ -25,6 +25,7 @@ layout: base
       {%- include post-list.html posts=site.posts initial=s.posts_initial step=s.posts_step -%}
     {%- else -%}
       <h2 class="section-title" id="{{ s.anchor }}-title">{{ s.title | escape }}</h2>
+      {%- if s.image -%}{%- include section-figure.html section=s -%}{%- endif -%}
       <div class="post-content section-body">
         {{ s.content }}
       </div>
