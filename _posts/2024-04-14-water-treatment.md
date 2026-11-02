@@ -29,7 +29,6 @@ The mixture was then put into two separate bottles (bottle A containing 650 gram
 <div class="figure-row">
 {% include figure.html dir="water-treatment" n=1 alt="IMG20240209170916" %}
 {% include figure.html dir="water-treatment" n=2 alt="IMG20240209171100" %}
-{% include figure.html dir="water-treatment" n=3 alt="IMG20240209174715" %}
 </div>
 
 **Mimicking Sewage Treatment Facilities**
@@ -41,10 +40,7 @@ Churner A was made from a Milk Frother. The battery was removed and in its place
 
 Churner B was made using a Motor Kit that involved building a spinning wheel, attaching it to a rod and connecting it to an AI system that could be coded using another device. Thus, after completing the short program that told the system to “set speed to 400% when turned on”, allowing the spinning wheel to act as a makeshift churner.
 
-<div class="figure-row">
 {% include figure.html dir="water-treatment" n=4 alt="IMG20240211124126" %}
-{% include figure.html dir="water-treatment" n=5 alt="IMG20240211124059" %}
-</div>
 
 Thus, the equipment pumped oxygen into the effluent over the course of 5 days, from which we could take samples over the days.
 

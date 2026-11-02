@@ -9,9 +9,9 @@
 
 // Palette (Gram and Leishman staining)
 $ink:       #21174B;  // body text, headings (crystal violet)
-$slide:     #EFEBF6;  // page ground (pale stained-slide lavender)
+$slide:     #F2F4F6;  // page ground
 $safranin:  #BF2A57;  // accent: at most one use per screen
-$buff:      #DCD5E8;  // section separation (dividing lines)
+$buff:      #EAE3D2;  // section separation
 $graphite:  #53606D;  // secondary text, metadata
 
 // Type
@@ -46,7 +46,7 @@ $brand-color-dark:      $ink;
 $site-title-color:      $ink;
 $text-color:            $ink;
 $background-color:      $slide;
-$code-background-color: #FAF8FC;
+$code-background-color: #FBFAF6;
 
 $link-base-color:    $ink;
 $link-visited-color: $ink;
@@ -57,7 +57,7 @@ $border-color-02: $graphite;
 $border-color-03: $ink;
 
 $table-text-color:      $ink;
-$table-zebra-color:     #E8E3F1;
+$table-zebra-color:     #EEF0F2;
 $table-header-bg-color: $buff;
 $table-header-border:   $graphite;
 $table-border-color:    $buff;
@@ -781,9 +781,11 @@ $counting-grid: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' wi
 .figure {
   margin: 1.75rem 0;
 
+  // Never stretched past the photo's own size.
   img {
     display: block;
-    width: 100%;
+    width: auto;
+    max-width: 100%;
     height: auto;
     margin: 0;
     border-radius: 2px;

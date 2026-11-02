@@ -11,11 +11,6 @@ A week ago, our house was left devoid of any person able to cook dinner for my b
 
 (I don’t have precise measurements for the recipe since it was a hastily prepared dinner, so feel free to estimate based on your judgment and preferences.)
 
-<div class="figure-row">
-{% include figure.html dir="chicken-rolls" n=1 alt="image" %}
-{% include figure.html dir="chicken-rolls" n=2 alt="image" %}
-</div>
-
 Ingredients:
 - Chicken breast (or any other boneless cuts)
 - Capsicum

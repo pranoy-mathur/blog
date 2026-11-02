@@ -15,8 +15,6 @@ author:
   name: Pranoy Mathur
   email: pranoy.mathur@gmail.com
 
-description: research and ruminations
-
 remote_theme: jekyll/minima@93b1921
 
 plugins:
