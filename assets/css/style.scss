@@ -8,11 +8,11 @@
 // =====================================================================
 
 // Palette (Gram and Leishman staining)
-$ink:       #241B47;  // body text, headings
+$ink:       #21174B;  // body text, headings (crystal violet)
 $slide:     #F2F4F6;  // page ground
-$safranin:  #B3365C;  // accent: at most one use per screen
-$buff:      #E8E2D4;  // section separation
-$graphite:  #55606B;  // secondary text, metadata
+$safranin:  #BF2A57;  // accent: at most one use per screen
+$buff:      #EAE3D2;  // section separation
+$graphite:  #53606D;  // secondary text, metadata
 
 // Type
 $font-heading: "Archivo", "Helvetica Neue", Arial, sans-serif;
@@ -371,7 +371,7 @@ html {
 
 // Faint Neubauer counting-chamber grid behind the statement only:
 // triple lines between the large squares, single lines inside them.
-$counting-grid: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72'%3E%3Cg fill='none' stroke='%23241B47' stroke-width='0.75'%3E%3Cpath stroke-opacity='0.06' d='M18 0V72M36 0V72M54 0V72M0 18H72M0 36H72M0 54H72'/%3E%3Cpath stroke-opacity='0.1' d='M0.5 0V72M3 0V72M69.5 0V72M0 0.5H72M0 3H72M0 69.5H72'/%3E%3C/g%3E%3C/svg%3E";
+$counting-grid: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72'%3E%3Cg fill='none' stroke='%2321174B' stroke-width='0.75'%3E%3Cpath stroke-opacity='0.072' d='M18 0V72M36 0V72M54 0V72M0 18H72M0 36H72M0 54H72'/%3E%3Cpath stroke-opacity='0.12' d='M0.5 0V72M3 0V72M69.5 0V72M0 0.5H72M0 3H72M0 69.5H72'/%3E%3C/g%3E%3C/svg%3E";
 
 .statement-block {
   position: relative;
