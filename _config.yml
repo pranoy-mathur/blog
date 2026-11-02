@@ -25,19 +25,40 @@ plugins:
   - jekyll-seo-tag
   - jekyll-remote-theme
 
+# Top navigation, in this order. Six items is the agreed ceiling.
+# The label is each page's nav_title (or its title if nav_title is not set).
 header_pages:
+  - index.md
   - research.md
-  - biology.md
-  - outreach.md
+  - social-impact.md
   - mun.md
-  - projects.md
-  - school.md
-  - music.md
-  - cooking.md
-  - sports.md
+  - beyond.md
   - about.md
 
 show_excerpts: true
+
+# Structured project pages. A file at _projects/research/acrb.md is served
+# at /research/acrb/ and listed on the Research & Internships page.
+collections:
+  projects:
+    output: true
+    permalink: /:path/
+
+defaults:
+  - scope:
+      path: "_projects/research"
+      type: projects
+    values:
+      layout: project
+      section: research
+      nav_parent: /research/
+  - scope:
+      path: "_projects/social-impact"
+      type: projects
+    values:
+      layout: project
+      section: social-impact
+      nav_parent: /social-impact/
 
 minima:
   skin: solarized-light

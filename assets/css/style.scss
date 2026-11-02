@@ -1,0 +1,629 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+// =====================================================================
+// DESIGN TOKENS
+// Change the site's colors, fonts and spacing here, and only here.
+// =====================================================================
+
+// Palette (Gram and Leishman staining)
+$ink:       #241B47;  // body text, headings
+$slide:     #F2F4F6;  // page ground
+$safranin:  #B3365C;  // accent: at most one use per screen
+$buff:      #E8E2D4;  // section separation
+$graphite:  #55606B;  // secondary text, metadata
+
+// Type
+$font-heading: "Archivo", "Helvetica Neue", Arial, sans-serif;
+$font-body:    "Source Serif 4", "Source Serif Pro", Georgia, serif;
+$font-mono:    "IBM Plex Mono", Menlo, Consolas, monospace;  // numeric data only
+
+$type-base:        18px;   // 1rem
+$type-line-height: 1.7;    // body text
+$type-small:       0.85rem;
+
+// Layout
+$measure:        40rem;   // text column, about 70 characters of body text
+$gutter-phone:   16px;    // side margin on phones
+$gutter-tablet:  8vw;     // left margin from 720px
+$gutter-desktop: 14vw;    // left margin from 1100px
+
+
+// =====================================================================
+// MINIMA VARIABLE OVERRIDES
+// These must come before the minima imports.
+// =====================================================================
+
+$base-font-family: $font-body;
+$base-font-size:   $type-base;
+$base-line-height: $type-line-height;
+$small-font-size:  $type-small;
+
+$brand-color:           $graphite;
+$brand-color-light:     $buff;
+$brand-color-dark:      $ink;
+$site-title-color:      $ink;
+$text-color:            $ink;
+$background-color:      $slide;
+$code-background-color: #FBFAF6;
+
+$link-base-color:    $ink;
+$link-visited-color: $ink;
+$link-hover-color:   $safranin;
+
+$border-color-01: $buff;
+$border-color-02: $graphite;
+$border-color-03: $ink;
+
+$table-text-color:      $ink;
+$table-zebra-color:     #EEF0F2;
+$table-header-bg-color: $buff;
+$table-header-border:   $graphite;
+$table-border-color:    $buff;
+
+@import
+  "minima/skins/{{ site.minima.skin | default: 'classic' }}",
+  "minima/initialize";
+
+
+// =====================================================================
+// CUSTOM STYLES
+// =====================================================================
+
+// ---------- Base ----------
+
+body {
+  background-color: $slide;
+  color: $ink;
+  font-family: $font-body;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-heading;
+  font-weight: 600;
+  color: $ink;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+a {
+  color: $ink;
+  text-decoration: underline;
+  text-decoration-color: rgba($ink, 0.35);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+
+  &:visited { color: $ink; }
+
+  &:hover,
+  &:focus-visible {
+    color: $safranin;
+    text-decoration-color: $safranin;
+  }
+}
+
+code, pre, kbd, samp,
+.num {
+  font-family: $font-mono;
+  font-size: 0.85em;
+}
+
+// Use <span class="num">865</span> for genuine numeric data only.
+.num { font-variant-numeric: tabular-nums; }
+
+pre, code {
+  background-color: $code-background-color;
+  border-color: $buff;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid $buff;
+  margin: 2.5rem 0;
+}
+
+blockquote {
+  color: $graphite;
+  border-left: 3px solid $buff;
+  font-size: 1rem;
+  letter-spacing: 0;
+  font-style: normal;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+
+// ---------- Layout: left-aligned single column, wide left margin ----------
+
+.wrapper {
+  max-width: none;
+  margin: 0;
+  padding-left: $gutter-phone;
+  padding-right: $gutter-phone;
+
+  @media screen and (min-width: 720px) {
+    padding-left: $gutter-tablet;
+    padding-right: 32px;
+  }
+
+  @media screen and (min-width: 1100px) {
+    padding-left: $gutter-desktop;
+  }
+}
+
+.page-content {
+  padding: 0 0 4rem;
+
+  .wrapper > * { max-width: $measure; }
+}
+
+
+// ---------- Header ----------
+
+.site-header {
+  border-top: 0;
+  border-bottom: 1px solid $buff;
+  min-height: 0;
+  line-height: 1.4;
+  padding: 1.75rem 0 0;
+}
+
+.site-title,
+.site-title:visited {
+  float: none;
+  display: inline-block;
+  font-family: $font-heading;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: $ink;
+  text-decoration: none;
+  padding: 0;
+}
+
+.site-title:hover { color: $ink; }
+
+.site-nav {
+  position: static;
+  float: none;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  text-align: left;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+  margin-top: 1rem;
+
+  .page-link,
+  .page-link:visited {
+    display: inline-block;
+    margin: 0;
+    padding: 0 0 0.85rem;
+    font-family: $font-heading;
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: $graphite;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+  }
+
+  .page-link:hover { color: $ink; }
+
+  // The one accent on most screens: which section you are in.
+  .page-link.is-current {
+    color: $ink;
+    border-bottom-color: $safranin;
+  }
+}
+
+
+// ---------- Page titles ----------
+
+.page-header,
+.post-header,
+.project-header {
+  margin: 3.5rem 0 2.5rem;
+}
+
+.page-title,
+.post-title,
+.page-heading {
+  font-family: $font-heading;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin: 0 0 0.75rem;
+
+  @media screen and (min-width: 720px) {
+    font-size: 2.4rem;
+  }
+}
+
+.page-heading { margin-top: 3.5rem; }
+
+.post-meta {
+  display: block;
+  font-family: $font-heading;
+  font-size: $type-small;
+  color: $graphite;
+}
+
+
+// ---------- Long-form text ----------
+
+.post-content {
+  font-size: 1rem;
+  line-height: $type-line-height;
+
+  h2 {
+    font-size: 1.35rem;
+    margin: 2.75rem 0 0.75rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    margin: 2rem 0 0.5rem;
+  }
+
+  h4 {
+    font-size: 1rem;
+    margin: 1.5rem 0 0.5rem;
+  }
+
+  p, ul, ol { margin-bottom: 1.15rem; }
+
+  li { margin-bottom: 0.35rem; }
+
+  img {
+    display: block;
+    margin: 1.75rem 0;
+  }
+
+  table {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  th {
+    font-family: $font-heading;
+    font-weight: 600;
+  }
+}
+
+
+// ---------- Homepage ----------
+
+.statement-block {
+  margin: 4.5rem 0 4rem;
+
+  @media screen and (min-width: 720px) {
+    margin: 7rem 0 5rem;
+  }
+}
+
+.statement {
+  font-family: $font-heading;
+  font-size: 2.1rem;
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  margin: 0;
+  max-width: 22ch;
+
+  @media screen and (min-width: 720px)  { font-size: 2.9rem; }
+  @media screen and (min-width: 1100px) { font-size: 3.4rem; }
+}
+
+.statement-empty {
+  max-width: $measure;
+  letter-spacing: 0;
+
+  // Shows the slot label at the statement's real size.
+  .slot { padding: 1.5rem 1.25rem 1.25rem; }
+
+  .slot-label {
+    display: block;
+    font-size: 2.1rem;
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    color: rgba($ink, 0.35);
+    margin: 0 0 0.75rem;
+
+    @media screen and (min-width: 720px)  { font-size: 2.9rem; }
+    @media screen and (min-width: 1100px) { font-size: 3.4rem; }
+  }
+}
+
+.feed { margin-top: 1rem; }
+
+.feed-heading {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: $graphite;
+  margin: 3rem 0 0.5rem;
+  letter-spacing: 0;
+}
+
+.post-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  > li {
+    border-top: 1px solid $buff;
+    padding: 1.4rem 0 1.5rem;
+    margin: 0;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0.3rem 0 0.4rem;
+  }
+
+  .post-link,
+  .post-link:visited {
+    display: inline;
+    font-size: inherit;
+    color: $ink;
+    text-decoration: none;
+  }
+
+  .post-link:hover { color: $safranin; }
+}
+
+.post-excerpt {
+  color: $graphite;
+  font-size: 0.95rem;
+  line-height: 1.6;
+
+  p { margin: 0; }
+}
+
+// Old category pages (/bio/, /projects/ ...) still use minima's markup.
+.home > .post-list > li > .post-meta { margin-bottom: 0; }
+
+
+// ---------- Section pages ----------
+
+.section-body {
+  margin-bottom: 1rem;
+
+  h2 {
+    border-top: 1px solid $buff;
+    padding-top: 1.75rem;
+    margin-top: 2.25rem;
+  }
+}
+
+.entry-list {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+}
+
+.entry {
+  border-top: 1px solid $buff;
+  padding: 1.75rem 0 1.85rem;
+  margin: 0;
+}
+
+.entry-title {
+  font-size: 1.35rem;
+  margin: 0 0 0.6rem;
+
+  a,
+  a:visited {
+    color: $ink;
+    text-decoration: none;
+  }
+
+  a:hover { color: $safranin; }
+}
+
+.entry-statement {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.entry-meta {
+  margin: 0.6rem 0 0;
+  font-family: $font-heading;
+  font-size: $type-small;
+  color: $graphite;
+}
+
+
+// ---------- Project pages ----------
+
+.crumb {
+  margin: 3rem 0 0;
+  font-family: $font-heading;
+  font-size: $type-small;
+
+  a,
+  a:visited {
+    color: $graphite;
+    text-decoration: none;
+  }
+
+  a:hover { color: $safranin; }
+}
+
+.project-header {
+  margin-top: 0.75rem;
+
+  .page-title { margin-bottom: 1rem; }
+}
+
+.project-statement {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin: 0 0 2rem;
+}
+
+.project-meta {
+  margin: 2rem 0 0;
+  border-top: 1px solid $buff;
+  border-bottom: 1px solid $buff;
+  padding: 0.9rem 0;
+
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 1rem;
+    padding: 0.3rem 0;
+  }
+
+  dt {
+    flex: 0 0 5.5rem;
+    font-family: $font-heading;
+    font-size: $type-small;
+    font-weight: 500;
+    color: $graphite;
+    padding-top: 0.15rem;
+  }
+
+  dd {
+    flex: 1 1 16rem;
+    margin: 0;
+    font-size: 0.95rem;
+  }
+}
+
+// Numbered method steps. Only project pages get numbered markers.
+.project-body ol {
+  list-style: none;
+  counter-reset: step;
+  margin-left: 0;
+  padding-left: 0;
+
+  > li {
+    counter-increment: step;
+    position: relative;
+    padding-left: 2.5rem;
+    margin-bottom: 0.85rem;
+  }
+
+  > li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 0.1rem;
+    width: 1.6rem;
+    font-family: $font-heading;
+    font-size: $type-small;
+    font-weight: 600;
+    color: $graphite;
+    text-align: right;
+  }
+}
+
+.back-link {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid $buff;
+  font-family: $font-heading;
+  font-size: $type-small;
+
+  a,
+  a:visited {
+    color: $graphite;
+    text-decoration: none;
+  }
+
+  a:hover { color: $safranin; }
+}
+
+
+// ---------- Placeholder slots (remove from pages as you write) ----------
+
+.slot {
+  letter-spacing: 0;
+  border: 1px dashed rgba($graphite, 0.55);
+  border-radius: 3px;
+  padding: 0.85rem 1rem;
+  margin: 0.5rem 0 1.25rem;
+  font-family: $font-heading;
+  font-size: $type-small;
+  line-height: 1.5;
+  color: $graphite;
+}
+
+.slot-label {
+  font-weight: 600;
+  color: $ink;
+  margin-right: 0.35rem;
+}
+
+.slot-inline {
+  display: inline-block;
+  border: 1px dashed rgba($graphite, 0.55);
+  border-radius: 3px;
+  padding: 0 0.5rem;
+  margin: 0;
+  font-family: $font-heading;
+  font-size: 0.8rem;
+  color: $graphite;
+}
+
+
+// ---------- Footer ----------
+
+.site-footer {
+  border-top: 1px solid $buff;
+  padding: 2rem 0 3rem;
+  font-family: $font-heading;
+  font-size: $type-small;
+  color: $graphite;
+
+  a,
+  a:visited {
+    color: $graphite;
+    text-decoration: none;
+  }
+
+  a:hover { color: $safranin; }
+
+  p { margin-bottom: 0.5rem; }
+
+  .footer-col-wrapper {
+    display: block;
+    margin: 0;
+    max-width: $measure;
+  }
+
+  .footer-col {
+    width: auto;
+    float: none;
+    padding: 0;
+    margin-bottom: 0.75rem;
+  }
+
+  .contact-list,
+  .social-media-list {
+    margin: 0;
+  }
+
+  .svg-icon {
+    fill: $graphite;
+  }
+
+  .social-links {
+    text-align: left;
+  }
+}

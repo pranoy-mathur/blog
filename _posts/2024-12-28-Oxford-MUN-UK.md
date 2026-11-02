@@ -2,7 +2,7 @@
 layout: post
 title: Outstanding Delegate at Oxford Model UN, UK 2024
 permalink: /oxford-MUN-UK-2024/
-categories: [projects]
+categories: [mun]
 ---
 
 On a chilly winter morning on November 22nd, 2024, the 3-day [Oxford Model United Nations](https://www.oxfordglobal.org/) began, marking the start of the most memorable event I had participated in up to that date. The stress of hasty preparations in the weeks leading up to the event, combined with the jittery nerves of attending a conference in a completely foreign country—feelings that had lingered at the back of my mind since I first learned I would be participating—seemed to intensify as I walked into the Oxford Examination Schools on the first day.

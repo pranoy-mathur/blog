@@ -1,0 +1,24 @@
+---
+layout: base
+---
+<div class="home">
+  <section class="statement-block">
+    {%- if page.statement and page.statement != "" -%}
+      <h1 class="statement">{{ page.statement }}</h1>
+    {%- else -%}
+      <h1 class="visually-hidden">{{ site.title | escape }}</h1>
+      <div class="statement statement-empty">
+        {%- include placeholder.html label="Statement" note="One line on what you work on, set large. Write it in index.md as statement:" -%}
+      </div>
+    {%- endif -%}
+  </section>
+
+  {{ content }}
+
+  {%- if site.posts.size > 0 -%}
+  <section class="feed">
+    <h2 class="feed-heading">Posts</h2>
+    {%- include post-list.html posts=site.posts -%}
+  </section>
+  {%- endif -%}
+</div>

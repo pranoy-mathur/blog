@@ -1,0 +1,48 @@
+---
+layout: base
+---
+{%- comment -%}
+  Structured project page. Front matter fields:
+    statement:  one sentence on what the project is
+    role:       your role
+    dates:      when it ran
+    status:     e.g. publication or award status
+    links:      optional list of { label: ..., url: ... }
+  The section headings and their content live in the Markdown body.
+{%- endcomment -%}
+<article class="project">
+  {%- assign parent = site.pages | where: "url", page.nav_parent | first -%}
+  {%- if parent -%}
+  <p class="crumb"><a href="{{ parent.url | relative_url }}">{{ parent.title | escape }}</a></p>
+  {%- endif -%}
+
+  <header class="project-header">
+    <h1 class="page-title">{{ page.title | escape }}</h1>
+    {%- if page.statement and page.statement != "" -%}
+      <p class="project-statement">{{ page.statement }}</p>
+    {%- else -%}
+      {%- include placeholder.html label="One-sentence statement" note="What this project is, in one sentence. Write it in the front matter as statement:" -%}
+    {%- endif -%}
+
+    <dl class="project-meta">
+      <div class="meta-row"><dt>Role</dt><dd>{% if page.role and page.role != "" %}{{ page.role }}{% else %}{% include placeholder.html inline=true %}{% endif %}</dd></div>
+      <div class="meta-row"><dt>Dates</dt><dd>{% if page.dates and page.dates != "" %}{{ page.dates }}{% else %}{% include placeholder.html inline=true %}{% endif %}</dd></div>
+      <div class="meta-row"><dt>Status</dt><dd>{% if page.status and page.status != "" %}{{ page.status }}{% else %}{% include placeholder.html inline=true %}{% endif %}</dd></div>
+      {%- if page.links -%}
+      <div class="meta-row"><dt>Links</dt><dd>
+        {%- for link in page.links -%}
+          <a href="{{ link.url }}">{{ link.label | escape }}</a>{% unless forloop.last %}, {% endunless %}
+        {%- endfor -%}
+      </dd></div>
+      {%- endif -%}
+    </dl>
+  </header>
+
+  <div class="post-content project-body">
+    {{ content }}
+  </div>
+
+  {%- if parent -%}
+  <p class="back-link"><a href="{{ parent.url | relative_url }}">Back to {{ parent.title | escape }}</a></p>
+  {%- endif -%}
+</article>

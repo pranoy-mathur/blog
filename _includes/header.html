@@ -1,0 +1,22 @@
+<header class="site-header">
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+    <nav class="site-nav" aria-label="Main">
+      {%- for path in site.header_pages -%}
+        {%- assign nav_page = site.pages | where: "path", path | first -%}
+        {%- if nav_page -%}
+          {%- assign label = nav_page.nav_title | default: nav_page.title -%}
+          {%- assign is_current = false -%}
+          {%- if page.url == nav_page.url -%}
+            {%- assign is_current = true -%}
+          {%- elsif page.nav_parent and page.nav_parent == nav_page.url -%}
+            {%- assign is_current = true -%}
+          {%- elsif page.layout == "post" and nav_page.url == "/" -%}
+            {%- assign is_current = true -%}
+          {%- endif -%}
+          <a class="page-link{% if is_current %} is-current{% endif %}" href="{{ nav_page.url | relative_url }}"{% if is_current %} aria-current="page"{% endif %}>{{ label | escape }}</a>
+        {%- endif -%}
+      {%- endfor -%}
+    </nav>
+  </div>
+</header>
