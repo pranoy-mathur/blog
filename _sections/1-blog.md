@@ -7,6 +7,7 @@ kind: blog
 # on, in your own words, between the quotes.
 statement: ""
 # How many posts show at first, and how many each "Show more posts" adds.
+# "Show fewer posts" goes back to the first number.
 posts_initial: 5
-posts_step: 10
+posts_step: 5
 ---

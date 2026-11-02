@@ -2,27 +2,44 @@
 (function () {
   "use strict";
 
-  // ---- Blog list: show a few posts, then more on request ----
+  // ---- Blog list: show a few posts, more on request, and back again ----
   function setUpPostList(list) {
     var initial = parseInt(list.getAttribute("data-initial"), 10);
-    var step = parseInt(list.getAttribute("data-step"), 10) || 10;
+    var step = parseInt(list.getAttribute("data-step"), 10) || 5;
     var items = Array.prototype.slice.call(list.children);
-    var button = list.nextElementSibling;
-    if (!initial || items.length <= initial || !button || !button.classList.contains("more-posts")) return;
+    var controls = list.nextElementSibling;
+    if (!initial || items.length <= initial || !controls || !controls.classList.contains("post-list-controls")) return;
+    var more = controls.querySelector(".more-posts");
+    var fewer = controls.querySelector(".fewer-posts");
 
     var shown = initial;
-    items.forEach(function (li, i) { if (i >= shown) li.hidden = true; });
-    button.hidden = false;
+    function render() {
+      items.forEach(function (li, i) { li.hidden = i >= shown; });
+      more.hidden = shown >= items.length;
+      fewer.hidden = shown <= initial;
+    }
+    controls.hidden = false;
+    render();
 
-    button.addEventListener("click", function () {
-      var next = Math.min(shown + step, items.length);
-      for (var i = shown; i < next; i++) items[i].hidden = false;
+    more.addEventListener("click", function () {
       var firstNew = items[shown];
-      shown = next;
-      if (shown >= items.length) button.hidden = true;
+      shown = Math.min(shown + step, items.length);
+      render();
       // Move keyboard focus to the first newly shown post.
       var link = firstNew && firstNew.querySelector("a");
       if (link) link.focus({ preventScroll: true });
+      if (more.hidden) fewer.focus({ preventScroll: true });
+    });
+
+    fewer.addEventListener("click", function () {
+      shown = initial;
+      render();
+      // The list just got shorter: bring the buttons back into view.
+      var rect = controls.getBoundingClientRect();
+      if (rect.top < 0 || rect.bottom > window.innerHeight) {
+        controls.scrollIntoView({ block: "center" });
+      }
+      more.focus({ preventScroll: true });
     });
   }
 

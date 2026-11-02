@@ -432,9 +432,19 @@ html {
 // Old category pages (/bio/, /projects/ ...) still use minima's markup.
 .home > .post-list > li > .post-meta { margin-bottom: 0; }
 
-.more-posts {
-  display: inline-block;
+.post-list-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
   margin: 0.5rem 0 0;
+
+  &[hidden] { display: none; }
+}
+
+.more-posts,
+.fewer-posts {
+  display: inline-block;
+  margin: 0;
   padding: 0.6rem 1.1rem;
   font-family: $font-heading;
   font-size: $type-small;
