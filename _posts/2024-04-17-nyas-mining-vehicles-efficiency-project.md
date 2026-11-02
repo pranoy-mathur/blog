@@ -11,7 +11,7 @@ My group and I decided to work on the efficiency of mining vehicles that release
 
 Our project utilized “Metal Organic Frameworks”, a porous polymer that essentially acts as a sponge (with a large surface area) to absorb carbon dioxide. This form of carbon capture technology would allow us to store the gas emissions, from where it could be used productively later on. 
 
-![promethean particles](https://github.com/pranoy-mathur/pranoy-mathur.github.io/assets/86551685/90cfb30d-a6c0-4147-b65b-e246ed9587ff)
+{% include figure.html dir="nyas-mining-vehicles" n=1 alt="promethean particles" %}
 
 The MOF model we used was MOF-74, which has the highest carbon dioxide capturing potential of any other porous substance. The figure above (credit: Promethean Particles) depicts the inner workings of the MOF. 
 

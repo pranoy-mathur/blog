@@ -10,8 +10,10 @@ I was competing in the U17 category for Long Jump, 110m Hurdles, and Triple Jump
 
 On the first day of the event, my only scheduled event was the triple jump. Although the techniques required for long jump and triple jump differ significantly, at the inter-school level, skilled long jumpers could be expected to translate much of their prowess into triple jump, and vice versa. Consequently, my coach and I were confident that a top-two finish was possible, especially considering that, in my one week of training, I had already matched the distance of the previous edition’s third-place finisher. With adrenaline coursing through my veins, surely I would be able to contend for a qualifying position, right?
 
-![ISSO 3](https://github.com/user-attachments/assets/955cfc66-b2ab-4cdd-9afa-5406b63c5d6e)
-![ISSO 2](https://github.com/user-attachments/assets/5047be57-1b08-42fa-990e-036c77c99a2f)
+<div class="figure-row">
+{% include figure.html dir="isso-athletics" n=1 alt="ISSO 3" %}
+{% include figure.html dir="isso-athletics" n=2 alt="ISSO 2" %}
+</div>
 
 
 Turns out, it wasn’t so easy! Although I managed to make the top 8, I barely scraped a 4th place finish after a grueling six jumps that progressively sapped more of my energy - a harsh reminder that my lack of training efforts would come back to bite me. One cannot expect to waltz into a national-level tournament with practically no training and compete with conditioned athletes from around the country. My habit of showing up to training only a few days before a tournament, like I had numerous times for other inter-school events, was no longer tolerated. And so, I dejectedly trudged into my room that night, trying to mentally prepare myself for my next two events.
@@ -26,7 +28,7 @@ While I wallowed in my misery after a miserable talk with my coach, they announc
 
 At that moment, I had no fear of winning or losing - I had come so far and experienced so much. Maybe if I let go of this expectation I held of myself, one where the only option was victory, then losing a race wouldn’t be so crushing. And if I no longer feared loss, I wouldn’t be so scared to try my hardest and admit to myself that it wasn’t enough. So I gave it my everything in that race. Although my body was tired from the long jump in the scalding sun only a few minutes earlier, my mind was certain that I would push until the very end.
 
-![ISSO 1](https://github.com/user-attachments/assets/8ede672e-a752-4789-9dd9-a01870f88cc9)
+{% include figure.html dir="isso-athletics" n=3 alt="ISSO 1" %}
 
 
 You were probably expecting me to say that I won the 110m hurdles after that moment of inspiration! I finished in third place, just short of an SGFI qualification that would have propelled my athletics journey to an unprecedented level.

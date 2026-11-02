@@ -1,0 +1,117 @@
+// Small enhancements. The site works without this file.
+(function () {
+  "use strict";
+
+  // ---- Blog list: show a few posts, then more on request ----
+  function setUpPostList(list) {
+    var initial = parseInt(list.getAttribute("data-initial"), 10);
+    var step = parseInt(list.getAttribute("data-step"), 10) || 10;
+    var items = Array.prototype.slice.call(list.children);
+    var button = list.nextElementSibling;
+    if (!initial || items.length <= initial || !button || !button.classList.contains("more-posts")) return;
+
+    var shown = initial;
+    items.forEach(function (li, i) { if (i >= shown) li.hidden = true; });
+    button.hidden = false;
+
+    button.addEventListener("click", function () {
+      var next = Math.min(shown + step, items.length);
+      for (var i = shown; i < next; i++) items[i].hidden = false;
+      var firstNew = items[shown];
+      shown = next;
+      if (shown >= items.length) button.hidden = true;
+      // Move keyboard focus to the first newly shown post.
+      var link = firstNew && firstNew.querySelector("a");
+      if (link) link.focus({ preventScroll: true });
+    });
+  }
+
+  // ---- Nav underline follows the section you are reading ----
+  function setUpScrollSpy() {
+    var header = document.querySelector(".site-header");
+    var nav = document.querySelector(".site-nav");
+    if (!header || !nav) return;
+    var links = Array.prototype.slice.call(nav.querySelectorAll("a[data-anchor]"));
+    var sections = links.map(function (a) { return document.getElementById(a.getAttribute("data-anchor")); });
+    if (sections.some(function (s) { return !s; })) return; // not the homepage
+
+    var currentIndex = -1;
+
+    function setCurrent(index) {
+      if (index === currentIndex) return;
+      currentIndex = index;
+      links.forEach(function (a, i) {
+        var on = i === index;
+        a.classList.toggle("is-current", on);
+        if (on) a.setAttribute("aria-current", "true");
+        else a.removeAttribute("aria-current");
+      });
+      // On phones the nav scrolls sideways: keep the current item in view.
+      var a = links[index];
+      if (nav.scrollWidth > nav.clientWidth && a) {
+        var left = a.offsetLeft - nav.offsetLeft;
+        if (left < nav.scrollLeft || left + a.offsetWidth > nav.scrollLeft + nav.clientWidth) {
+          nav.scrollTo({ left: Math.max(0, left - 16), behavior: "smooth" });
+        }
+      }
+    }
+
+    // After a nav click, keep the clicked tab underlined until scrolling stops.
+    var locked = false, unlockTimer = null;
+    function lockUntilScrollEnds() {
+      locked = true;
+      clearTimeout(unlockTimer);
+      unlockTimer = setTimeout(function () { locked = false; }, 200);
+    }
+    links.forEach(function (a, i) {
+      a.addEventListener("click", function () {
+        setCurrent(i);
+        lockUntilScrollEnds();
+      });
+    });
+
+    function update() {
+      if (locked) { lockUntilScrollEnds(); return; }
+      var line = header.getBoundingClientRect().bottom + Math.min(160, window.innerHeight * 0.25);
+      var index = 0;
+      for (var i = 0; i < sections.length; i++) {
+        if (sections[i].getBoundingClientRect().top <= line) index = i;
+      }
+      var doc = document.documentElement;
+      if (window.innerHeight + window.scrollY >= doc.scrollHeight - 2) index = sections.length - 1;
+      setCurrent(index);
+    }
+
+    var ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(function () { ticking = false; update(); });
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    update();
+  }
+
+  // Nav jumps land just below the sticky header, whatever its height.
+  function setScrollPadding() {
+    var header = document.querySelector(".site-header");
+    if (header) document.documentElement.style.scrollPaddingTop = header.offsetHeight + "px";
+  }
+
+  function init() {
+    setScrollPadding();
+    window.addEventListener("resize", setScrollPadding);
+    Array.prototype.forEach.call(document.querySelectorAll(".post-list[data-initial]"), setUpPostList);
+    // Hiding posts moves the sections below, so re-apply a #section link.
+    if (window.location.hash.length > 1) {
+      var target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
+      if (target) target.scrollIntoView();
+    }
+    setUpScrollSpy();
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+})();

@@ -38,7 +38,8 @@ When a stained blood smear is observed under a microscope, differences in the sh
 
 
 Below is an image of my Leishman’s staining where a monocyte and numerous RBC are visible:
-![Leishman Stain Blog](https://github.com/user-attachments/assets/38b5333f-ceb0-458e-b3ed-51971d5fd6fc)
+
+{% include figure.html dir="immunology-leishmans-stain" n=1 alt="Leishman Stain Blog" %}
 
 
 

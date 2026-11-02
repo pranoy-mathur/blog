@@ -1,0 +1,8 @@
+<footer class="site-footer h-card">
+  <div class="wrapper">
+    <p class="p-name">{{ site.author.name | escape }}</p>
+    {%- if site.author.email %}
+    <p><a class="u-email" href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></p>
+    {%- endif %}
+  </div>
+</footer>

@@ -11,9 +11,9 @@ layout: base
   The section headings and their content live in the Markdown body.
 {%- endcomment -%}
 <article class="project">
-  {%- assign parent = site.pages | where: "url", page.nav_parent | first -%}
+  {%- assign parent = site.sections | where: "anchor", page.section | first -%}
   {%- if parent -%}
-  <p class="crumb"><a href="{{ parent.url | relative_url }}">{{ parent.title | escape }}</a></p>
+  <p class="crumb"><a href="{{ "/" | relative_url }}#{{ parent.anchor }}">{{ parent.title | escape }}</a></p>
   {%- endif -%}
 
   <header class="project-header">
@@ -43,6 +43,6 @@ layout: base
   </div>
 
   {%- if parent -%}
-  <p class="back-link"><a href="{{ parent.url | relative_url }}">Back to {{ parent.title | escape }}</a></p>
+  <p class="back-link"><a href="{{ "/" | relative_url }}#{{ parent.anchor }}">Back to {{ parent.title | escape }}</a></p>
   {%- endif -%}
 </article>

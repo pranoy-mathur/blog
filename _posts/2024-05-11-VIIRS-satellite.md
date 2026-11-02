@@ -30,11 +30,11 @@ These data collection dates align with the US summer season when wildfire risk i
 
 - _Land Surface Temperature_: A high land surface temperature facilitates wildfire outbreaks. It dries out moist vegetation, increases the chances of dry matter catching fire on the ground, and promotes rapid fire spread. Fig. 1. Shows a sample of satellite data taken for the Land Surface Temperature.
 
-![image](https://github.com/pranoy-mathur/pranoy-mathur.github.io/assets/86551685/bbffa4a5-fee5-4426-8afb-676c573786d3)
+{% include figure.html dir="viirs-satellite" n=1 alt="image" %}
 
 - _Green Vegetation Fraction_: Green vegetation can act as fuel for wildfires, so high amounts of greenery, along with high land surface temperature, suggest a greater likelihood of wildfire outbreaks. Fig. 2 shows a sample of satellite data taken for the Green Vegetation Fraction.
 
-![image](https://github.com/pranoy-mathur/pranoy-mathur.github.io/assets/86551685/ebcbcedd-c7e6-4641-aafc-a38a6b4ea09f)
+{% include figure.html dir="viirs-satellite" n=2 alt="image" %}
 
 - _Drought Index_: This criterion indicates an area's dryness or moisture conditions. Regions with low humidity and high dryness are more prone to wildfire ignition and spread.
 

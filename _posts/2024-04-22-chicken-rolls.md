@@ -11,9 +11,10 @@ A week ago, our house was left devoid of any person able to cook dinner for my b
 
 (I don’t have precise measurements for the recipe since it was a hastily prepared dinner, so feel free to estimate based on your judgment and preferences.)
 
-![image](https://github.com/pranoy-mathur/pranoy-mathur.github.io/assets/86551685/bb9ee7e6-bbc5-455d-8378-570a29f8d770)
-
-![image](https://github.com/pranoy-mathur/pranoy-mathur.github.io/assets/86551685/f3f9d4a7-5834-468d-ae03-680e1a7401f7)
+<div class="figure-row">
+{% include figure.html dir="chicken-rolls" n=1 alt="image" %}
+{% include figure.html dir="chicken-rolls" n=2 alt="image" %}
+</div>
 
 Ingredients:
 - Chicken breast (or any other boneless cuts)

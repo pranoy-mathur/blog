@@ -25,21 +25,15 @@ plugins:
   - jekyll-seo-tag
   - jekyll-remote-theme
 
-# Top navigation, in this order. Six items is the agreed ceiling.
-# The label is each page's nav_title (or its title if nav_title is not set).
-header_pages:
-  - index.md
-  - research.md
-  - social-impact.md
-  - mun.md
-  - beyond.md
-  - about.md
-
 show_excerpts: true
 
-# Structured project pages. A file at _projects/research/acrb.md is served
-# at /research/acrb/ and listed on the Research & Internships page.
 collections:
+  # The homepage sections, in the order set by each file's `order:`.
+  # They also make the top navigation. Six is the agreed ceiling.
+  sections:
+    output: false
+  # Structured project pages. A file at _projects/research/acrb.md is served
+  # at /research/acrb/ and listed in the Research & Internships section.
   projects:
     output: true
     permalink: /:path/
@@ -51,16 +45,12 @@ defaults:
     values:
       layout: project
       section: research
-      nav_parent: /research/
   - scope:
       path: "_projects/social-impact"
       type: projects
     values:
       layout: project
       section: social-impact
-      nav_parent: /social-impact/
 
 minima:
   skin: solarized-light
-  social_links:
-    - { platform: instagram, user_url: "https://www.instagram.com/a.amr_campaign" }

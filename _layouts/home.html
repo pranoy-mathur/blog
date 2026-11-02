@@ -1,24 +1,54 @@
 ---
 layout: base
 ---
+{%- comment -%}
+  One-page homepage. Each file in _sections/ becomes one section, in order.
+{%- endcomment -%}
+{%- assign home_sections = site.sections | sort: "order" -%}
 <div class="home">
-  <section class="statement-block">
-    {%- if page.statement and page.statement != "" -%}
-      <h1 class="statement">{{ page.statement }}</h1>
-    {%- else -%}
-      <h1 class="visually-hidden">{{ site.title | escape }}</h1>
-      <div class="statement statement-empty">
-        {%- include placeholder.html label="Statement" note="One line on what you work on, set large. Write it in index.md as statement:" -%}
+  {%- for s in home_sections -%}
+  <section class="site-section{% if forloop.first %} is-first{% endif %}" id="{{ s.anchor }}" aria-labelledby="{{ s.anchor }}-title">
+
+    {%- if s.kind == "blog" -%}
+      <div class="statement-block">
+        {%- if s.statement and s.statement != "" -%}
+          <h1 class="statement">{{ s.statement }}</h1>
+        {%- else -%}
+          <h1 class="visually-hidden">{{ site.title | escape }}</h1>
+          <div class="statement statement-empty">
+            {%- include placeholder.html label="Statement" note="One line on what you work on, set large. Write it in _sections/1-blog.md as statement:" -%}
+          </div>
+        {%- endif -%}
       </div>
+      <h2 class="section-title" id="{{ s.anchor }}-title">{{ s.title | escape }}</h2>
+      {{ s.content }}
+      {%- include post-list.html posts=site.posts initial=s.posts_initial step=s.posts_step -%}
+    {%- else -%}
+      <h2 class="section-title" id="{{ s.anchor }}-title">{{ s.title | escape }}</h2>
+      <div class="post-content section-body">
+        {{ s.content }}
+      </div>
+      {%- if s.projects -%}
+        {%- assign entries = site.projects | where: "section", s.projects | sort: "order" -%}
+        <ul class="entry-list">
+          {%- for entry in entries -%}
+          <li class="entry">
+            <h3 class="entry-title"><a href="{{ entry.url | relative_url }}">{{ entry.title | escape }}</a></h3>
+            {%- if entry.statement and entry.statement != "" -%}
+              <p class="entry-statement">{{ entry.statement }}</p>
+            {%- else -%}
+              {%- include placeholder.html label="One-sentence statement" note="Comes from statement: in this project's front matter." -%}
+            {%- endif -%}
+            {%- if entry.status and entry.status != "" -%}
+              <p class="entry-meta">{{ entry.status }}</p>
+            {%- endif -%}
+            <p class="entry-more"><a href="{{ entry.url | relative_url }}">Summary, methods and results</a></p>
+          </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
     {%- endif -%}
-  </section>
 
-  {{ content }}
-
-  {%- if site.posts.size > 0 -%}
-  <section class="feed">
-    <h2 class="feed-heading">Posts</h2>
-    {%- include post-list.html posts=site.posts -%}
   </section>
-  {%- endif -%}
+  {%- endfor -%}
 </div>

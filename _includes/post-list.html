@@ -1,6 +1,9 @@
-{%- comment -%} Usage: {% include post-list.html posts=some_posts %} {%- endcomment -%}
+{%- comment -%}
+  Usage: {% include post-list.html posts=some_posts initial=5 step=10 %}
+  initial and step are optional. Without them every post shows.
+{%- endcomment -%}
 {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-<ul class="post-list">
+<ul class="post-list"{% if include.initial %} data-initial="{{ include.initial }}" data-step="{{ include.step | default: 10 }}"{% endif %}>
   {%- for post in include.posts -%}
   <li>
     <time class="post-meta" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>
@@ -11,3 +14,6 @@
   </li>
   {%- endfor -%}
 </ul>
+{%- if include.initial and include.posts.size > include.initial -%}
+<button type="button" class="more-posts" hidden>Show more posts</button>
+{%- endif -%}

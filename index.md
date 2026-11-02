@@ -1,13 +1,7 @@
 ---
 layout: home
-title: Pranoy Mathur's blog
-nav_title: Blog
+title: Pranoy Mathur
 permalink: /
-# The large line at the top of the homepage. Write one line on what you
-# work on, in your own words, between the quotes.
-statement: ""
+# The homepage is built from the files in _sections/. The large statement
+# line is set in _sections/1-blog.md.
 ---
-
-<!-- Previous homepage text, kept for reference. It is hidden on the site.
-Welcome to my blog. I hope you enjoy my writings below :).
--->

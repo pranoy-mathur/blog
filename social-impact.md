@@ -1,10 +1,7 @@
 ---
-layout: section
-title: Social Impact
+# This address now points to the matching part of the homepage.
+layout: redirect
 permalink: /social-impact/
-# Projects listed on this page come from _projects/social-impact/.
-section: social-impact
-post_categories: [social-impact]
+redirect_to: /#social-impact
+sitemap: false
 ---
-
-{% include placeholder.html label="Intro (optional)" note="One or two sentences introducing this section. Delete this line if the list speaks for itself." %}

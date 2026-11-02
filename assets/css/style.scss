@@ -168,14 +168,42 @@ blockquote {
 }
 
 
-// ---------- Header ----------
+// ---------- Header (stays at the top while you scroll) ----------
+
+// Fallbacks for the header height. assets/js/site.js sets the exact value.
+$header-offset-phone:   106px;
+$header-offset-desktop: 64px;
+
+html {
+  scroll-padding-top: $header-offset-phone;
+
+  @media screen and (min-width: 720px) {
+    scroll-padding-top: $header-offset-desktop;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
+}
 
 .site-header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: $slide;
   border-top: 0;
   border-bottom: 1px solid $buff;
   min-height: 0;
   line-height: 1.4;
-  padding: 1.75rem 0 0;
+  padding: 1rem 0 0;
+
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    column-gap: 2.75rem;
+  }
 }
 
 .site-title,
@@ -188,7 +216,7 @@ blockquote {
   letter-spacing: 0;
   color: $ink;
   text-decoration: none;
-  padding: 0;
+  padding: 0 0 0.85rem;
 }
 
 .site-title:hover { color: $ink; }
@@ -201,22 +229,39 @@ blockquote {
   background: none;
   text-align: left;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem 1.5rem;
-  margin-top: 1rem;
+  flex-wrap: nowrap;
+  gap: 1.5rem;
+  // Phones: one row that scrolls sideways.
+  flex: 1 1 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar { display: none; }
+
+  @media screen and (min-width: 720px) {
+    flex: 0 1 auto;
+    flex-wrap: wrap;
+    overflow: visible;
+    row-gap: 0;
+  }
 
   .page-link,
   .page-link:visited {
     display: inline-block;
+    flex: 0 0 auto;
     margin: 0;
-    padding: 0 0 0.85rem;
+    padding: 0.35rem 0 0.85rem;
     font-family: $font-heading;
     font-size: 0.9rem;
     font-weight: 500;
     line-height: 1.4;
+    white-space: nowrap;
     color: $graphite;
     text-decoration: none;
     border-bottom: 2px solid transparent;
+    margin-bottom: -1px;  // underline sits on the header rule
+    transition: color 0.15s ease, border-color 0.15s ease;
   }
 
   .page-link:hover { color: $ink; }
@@ -348,16 +393,6 @@ blockquote {
   }
 }
 
-.feed { margin-top: 1rem; }
-
-.feed-heading {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: $graphite;
-  margin: 3rem 0 0.5rem;
-  letter-spacing: 0;
-}
-
 .post-list {
   list-style: none;
   margin: 0;
@@ -397,13 +432,72 @@ blockquote {
 // Old category pages (/bio/, /projects/ ...) still use minima's markup.
 .home > .post-list > li > .post-meta { margin-bottom: 0; }
 
+.more-posts {
+  display: inline-block;
+  margin: 0.5rem 0 0;
+  padding: 0.6rem 1.1rem;
+  font-family: $font-heading;
+  font-size: $type-small;
+  font-weight: 500;
+  color: $ink;
+  background: transparent;
+  border: 1px solid rgba($ink, 0.3);
+  border-radius: 3px;
+  cursor: pointer;
 
-// ---------- Section pages ----------
+  &:hover,
+  &:focus-visible {
+    border-color: $ink;
+  }
+
+  &[hidden] { display: none; }
+}
+
+
+// ---------- Homepage sections ----------
+
+.site-section {
+  margin-top: 2rem;
+  padding: 2.75rem 0 1.5rem;
+  border-top: 1px solid $buff;
+
+  &.is-first {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  // Lets the last section scroll up to the header when its tab is clicked.
+  &:last-child { min-height: 80vh; }
+}
+
+.section-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin: 0 0 1.5rem;
+
+  @media screen and (min-width: 720px) {
+    font-size: 2rem;
+  }
+}
+
+.entry-more {
+  margin: 0.75rem 0 0;
+  font-family: $font-heading;
+  font-size: $type-small;
+
+  a,
+  a:visited { color: $graphite; }
+
+  a:hover { color: $safranin; }
+}
 
 .section-body {
   margin-bottom: 1rem;
 
-  h2 {
+  h3 {
+    font-size: 1.2rem;
     border-top: 1px solid $buff;
     padding-top: 1.75rem;
     margin-top: 2.25rem;
@@ -423,7 +517,7 @@ blockquote {
 }
 
 .entry-title {
-  font-size: 1.35rem;
+  font-size: 1.2rem;
   margin: 0 0 0.6rem;
 
   a,
@@ -550,6 +644,40 @@ blockquote {
 }
 
 
+// ---------- Post images ----------
+
+.figure {
+  margin: 1.75rem 0;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    border-radius: 2px;
+  }
+
+  figcaption {
+    margin-top: 0.5rem;
+    font-family: $font-heading;
+    font-size: $type-small;
+    color: $graphite;
+  }
+}
+
+// Two or three images side by side; stacks on phones.
+.figure-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 0.75rem;
+  align-items: start;
+  margin: 1.75rem 0;
+
+  .figure,
+  .slot { margin: 0; }
+}
+
+
 // ---------- Placeholder slots (remove from pages as you write) ----------
 
 .slot {
@@ -568,6 +696,15 @@ blockquote {
   font-weight: 600;
   color: $ink;
   margin-right: 0.35rem;
+}
+
+.slot-image {
+  min-height: 7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .slot-note { word-break: break-all; }
 }
 
 .slot-inline {
@@ -591,6 +728,8 @@ blockquote {
   font-size: $type-small;
   color: $graphite;
 
+  p { margin: 0 0 0.35rem; }
+
   a,
   a:visited {
     color: $graphite;
@@ -598,32 +737,4 @@ blockquote {
   }
 
   a:hover { color: $safranin; }
-
-  p { margin-bottom: 0.5rem; }
-
-  .footer-col-wrapper {
-    display: block;
-    margin: 0;
-    max-width: $measure;
-  }
-
-  .footer-col {
-    width: auto;
-    float: none;
-    padding: 0;
-    margin-bottom: 0.75rem;
-  }
-
-  .contact-list,
-  .social-media-list {
-    margin: 0;
-  }
-
-  .svg-icon {
-    fill: $graphite;
-  }
-
-  .social-links {
-    text-align: left;
-  }
 }
