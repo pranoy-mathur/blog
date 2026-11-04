@@ -54,37 +54,9 @@
 
     var currentIndex = -1;
 
-    // Microscope gauge (wide screens only; harmless if hidden).
-    var scope = document.querySelector(".scope");
-    var scopeFill = scope && scope.querySelector(".scope-fill");
-    var scopeMarks = scope ? Array.prototype.slice.call(scope.querySelectorAll(".scope-mark")) : [];
-    var scopeMag = scope && scope.querySelector(".scope-mag");
-    var scopeLabel = scope && scope.querySelector(".scope-label");
-
-    function placeMarks() {
-      var max = document.documentElement.scrollHeight - window.innerHeight;
-      if (max <= 0) return;
-      scopeMarks.forEach(function (m, i) {
-        var target = sections[i].getBoundingClientRect().top + window.scrollY - header.offsetHeight;
-        m.style.top = Math.max(0, Math.min(100, (target / max) * 100)) + "%";
-      });
-    }
-
-    function updateScope() {
-      if (!scopeFill) return;
-      var max = document.documentElement.scrollHeight - window.innerHeight;
-      var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
-      scopeFill.style.height = (p * 100) + "%";
-    }
-
     function setCurrent(index) {
       if (index === currentIndex) return;
       currentIndex = index;
-      scopeMarks.forEach(function (m, i) { m.classList.toggle("is-current", i === index); });
-      if (scopeMag && scopeMarks[index]) {
-        scopeMag.textContent = scopeMarks[index].getAttribute("data-mag") + "\u00d7";
-        scopeLabel.textContent = scopeMarks[index].getAttribute("data-label");
-      }
       links.forEach(function (a, i) {
         var on = i === index;
         a.classList.toggle("is-current", on);
@@ -116,7 +88,6 @@
     });
 
     function update() {
-      updateScope();
       if (locked) { lockUntilScrollEnds(); return; }
       var line = header.getBoundingClientRect().bottom + Math.min(160, window.innerHeight * 0.25);
       var index = 0;
@@ -136,9 +107,7 @@
     }
 
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", function () { placeMarks(); onScroll(); });
-    window.addEventListener("load", placeMarks);
-    placeMarks();
+    window.addEventListener("resize", onScroll);
     update();
   }
 

@@ -86,17 +86,3 @@ layout: base
   {%- endfor -%}
 </div>
 
-{%- comment -%}
-  Microscope gauge on wide screens: fills as you scroll, and the objective
-  "zooms in" one step for each section.
-{%- endcomment -%}
-{%- assign objectives = "4,10,20,40,60,100" | split: "," -%}
-<div class="scope" aria-hidden="true">
-  <div class="scope-track">
-    <div class="scope-fill"></div>
-    {%- for s in home_sections -%}
-    <span class="scope-mark" data-anchor="{{ s.anchor }}" data-mag="{{ objectives[forloop.index0] | default: '100' }}" data-label="{{ s.nav_title | default: s.title | escape }}"></span>
-    {%- endfor -%}
-  </div>
-  <div class="scope-readout"><span class="scope-mag num">{{ objectives[0] }}&times;</span><span class="scope-label">{{ home_sections.first.nav_title | default: home_sections.first.title }}</span></div>
-</div>

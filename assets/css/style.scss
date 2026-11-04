@@ -1001,7 +1001,7 @@ $counting-grid: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' wi
 }
 
 
-// ---------- A little life: cells, stats, microscope gauge ----------
+// ---------- A little life: cells and stats ----------
 
 // Stained cells sitting in the counting-chamber grid at the top of the page.
 .hero-cells {
@@ -1126,81 +1126,7 @@ $counting-grid: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' wi
   color: $graphite;
 }
 
-// Microscope gauge in the left margin of the homepage (very wide screens).
-.scope { display: none; }
-
-@media screen and (min-width: 1400px) {
-  .scope {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-    position: fixed;
-    z-index: 5;
-    left: 32px;
-    top: 50%;
-    height: 44vh;
-    transform: translateY(-50%);
-    pointer-events: none;
-  }
-
-  .scope-track {
-    position: relative;
-    flex: 1 1 auto;
-    width: 14px;
-    background-image:
-      repeating-linear-gradient(to bottom, rgba($ink, 0.4) 0, rgba($ink, 0.4) 1px, transparent 1px, transparent 40px),
-      repeating-linear-gradient(to bottom, rgba($ink, 0.22) 0, rgba($ink, 0.22) 1px, transparent 1px, transparent 8px);
-    background-size: 14px 100%, 7px 100%;
-    background-repeat: no-repeat;
-    border-left: 1px solid rgba($ink, 0.3);
-  }
-
-  .scope-fill {
-    position: absolute;
-    top: 0;
-    left: -2px;
-    width: 3px;
-    height: 0;
-    background-color: $ink;
-    transition: height 0.15s linear;
-  }
-
-  .scope-mark {
-    position: absolute;
-    left: -6px;
-    width: 9px;
-    height: 9px;
-    margin-top: -4px;
-    border: 1.5px solid $ink;
-    border-radius: 50%;
-    background-color: $slide;
-    transition: background-color 0.2s ease;
-
-    &.is-current { background-color: $ink; }
-  }
-
-  .scope-readout {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.2;
-  }
-
-  .scope-mag {
-    font-size: 1.05rem;
-    font-weight: 500;
-    color: $ink;
-  }
-
-  .scope-label {
-    font-family: $font-heading;
-    font-size: 0.7rem;
-    color: $graphite;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .cell { animation: none; }
   .hero-cells { transition: none; }
-  .scope-fill, .scope-mark { transition: none; }
 }
