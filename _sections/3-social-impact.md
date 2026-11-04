@@ -1,5 +1,6 @@
 ---
-title: Social Impact
+title: In the community
+nav_title: Community
 anchor: social-impact
 order: 3
 # Lists the project pages in _projects/social-impact/.

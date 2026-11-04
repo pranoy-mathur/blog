@@ -1,6 +1,8 @@
 ---
-title: Research & Internships
+title: In the lab
+nav_title: Lab
 anchor: research
+# title: the heading on the page. nav_title: the short label in the top nav.
 order: 2
 # Lists the project pages in _projects/research/.
 projects: research

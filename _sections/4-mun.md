@@ -1,5 +1,6 @@
 ---
-title: MUN & Debate
+title: In the debate room
+nav_title: Debate
 anchor: mun
 order: 4
 ---

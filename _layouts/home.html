@@ -10,15 +10,31 @@ layout: base
   <section class="site-section{% if forloop.first %} is-first{% endif %}{% if s.image %} has-figure{% endif %}" id="{{ s.anchor }}" aria-labelledby="{{ s.anchor }}-title">
 
     {%- if s.kind == "blog" -%}
+      {%- assign hero_photo = nil -%}
+      {%- if s.photo and s.photo != "" -%}
+        {%- assign hero_photo = site.static_files | where: "path", s.photo | first -%}
+      {%- endif -%}
       <div class="statement-block">
-        {%- if s.statement and s.statement != "" -%}
-          <h1 class="statement">{{ s.statement }}</h1>
-        {%- else -%}
-          <h1 class="visually-hidden">{{ site.title | escape }}</h1>
-          <div class="statement statement-empty">
-            {%- include placeholder.html label="Statement" note="One line on what you work on, set large. Write it in _sections/1-blog.md as statement:" -%}
+        <div class="hero">
+          <div class="hero-text">
+            <h1 class="hero-name">{{ site.author.name | escape }}</h1>
+            {%- if s.roles and s.roles.size > 0 -%}
+              <p class="hero-roles">
+                {%- for role in s.roles -%}<span class="role">{{ role | escape }}</span>{%- endfor -%}
+              </p>
+            {%- elsif s.statement == nil or s.statement == "" -%}
+              {%- include placeholder.html label="Roles or sentence" note="Set roles: or statement: in _sections/1-blog.md" -%}
+            {%- endif -%}
+            {%- if s.statement and s.statement != "" -%}
+              <p class="hero-statement">{{ s.statement }}</p>
+            {%- endif -%}
           </div>
-        {%- endif -%}
+          {%- if hero_photo -%}
+            <figure class="hero-photo"><img src="{{ s.photo | relative_url }}" alt="{{ s.photo_alt | default: site.author.name | escape }}"></figure>
+          {%- else -%}
+            <div class="hero-photo slot slot-image"><span class="slot-label">Photo</span> <span class="slot-note">Set photo: in _sections/1-blog.md</span></div>
+          {%- endif -%}
+        </div>
       </div>
       <h2 class="section-title" id="{{ s.anchor }}-title">{{ s.title | escape }}</h2>
       {{ s.content }}

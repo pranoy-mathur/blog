@@ -31,7 +31,7 @@ collections:
   sections:
     output: false
   # Structured project pages. A file at _projects/research/acrb.md is served
-  # at /research/acrb/ and listed in the Research & Internships section.
+  # at /research/acrb/ and listed in the "In the lab" section.
   projects:
     output: true
     permalink: /:path/
