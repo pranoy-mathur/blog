@@ -1,5 +1,5 @@
 ---
-title: In the community
+title: Community
 nav_title: Community
 anchor: social-impact
 order: 3

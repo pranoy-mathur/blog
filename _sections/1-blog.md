@@ -17,6 +17,6 @@ photo_alt: "Pranoy Mathur"
 statement: "In the lab, in the community, in the debate room, on the field, and on stage."
 # How many posts show at first, and how many each "Show more posts" adds.
 # "Show fewer posts" goes back to the first number.
-posts_initial: 5
-posts_step: 5
+posts_initial: 4
+posts_step: 4
 ---

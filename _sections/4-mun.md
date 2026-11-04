@@ -5,10 +5,6 @@ anchor: mun
 order: 4
 ---
 
-### Secretary-General, INYP/INMUN
-
-{% include placeholder.html label="Entry" note="What the conference is, what you are responsible for, and the scale." %}
-
 ### Director, National Health Authority committee, INYP 2025
 
 Created and directed the National Health Authority committee at Inventure's 2025 conference, with an agenda on healthcare infrastructure and antimicrobial resistance.

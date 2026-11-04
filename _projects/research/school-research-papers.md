@@ -1,4 +1,6 @@
 ---
+# Hidden from the site. Delete the "published: false" line below to show it again.
+published: false
 title: Science Beyond Curriculum and the Cambridge Science Competition
 order: 4
 statement: "School research projects, including a test of cheap biodegradable materials for cleaning Bengaluru lake water."
