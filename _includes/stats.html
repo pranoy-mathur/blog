@@ -1,0 +1,13 @@
+{%- comment -%}
+  A row of big numbers. Usage: {% include stats.html stats=section.stats %}
+  Each item: { value: "3,500+", unit: "ns" (optional), label: "..." }
+  assets/js/site.js counts each number up when it scrolls into view.
+{%- endcomment -%}
+<dl class="stats">
+  {%- for st in include.stats -%}
+  <div class="stat">
+    <dt class="stat-label">{{ st.label | escape }}</dt>
+    <dd class="stat-value"><span class="num" data-count="{{ st.value | escape }}">{{ st.value | escape }}</span>{% if st.unit %}<span class="stat-unit"> {{ st.unit | escape }}</span>{% endif %}</dd>
+  </div>
+  {%- endfor -%}
+</dl>

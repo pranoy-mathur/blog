@@ -12,5 +12,11 @@ image: /assets/images/posts/immunology-leishmans-stain/1.jpg
 image_alt: "Leishman-stained blood smear under a microscope, with one white blood cell among red blood cells"
 image_caption: ""
 image_tint: false
+# Big numbers shown at the top of this section. They count up on screen.
+stats:
+  - { value: "17,967", label: "phytochemicals filtered for the AcrB screen" }
+  - { value: "863", label: "compounds docked against AcrB" }
+  - { value: "100", unit: "ns", label: "molecular dynamics simulation" }
+  - { value: "2", label: "CREST Gold Awards" }
 ---
 

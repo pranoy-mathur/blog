@@ -54,9 +54,37 @@
 
     var currentIndex = -1;
 
+    // Microscope gauge (wide screens only; harmless if hidden).
+    var scope = document.querySelector(".scope");
+    var scopeFill = scope && scope.querySelector(".scope-fill");
+    var scopeMarks = scope ? Array.prototype.slice.call(scope.querySelectorAll(".scope-mark")) : [];
+    var scopeMag = scope && scope.querySelector(".scope-mag");
+    var scopeLabel = scope && scope.querySelector(".scope-label");
+
+    function placeMarks() {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      if (max <= 0) return;
+      scopeMarks.forEach(function (m, i) {
+        var target = sections[i].getBoundingClientRect().top + window.scrollY - header.offsetHeight;
+        m.style.top = Math.max(0, Math.min(100, (target / max) * 100)) + "%";
+      });
+    }
+
+    function updateScope() {
+      if (!scopeFill) return;
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      scopeFill.style.height = (p * 100) + "%";
+    }
+
     function setCurrent(index) {
       if (index === currentIndex) return;
       currentIndex = index;
+      scopeMarks.forEach(function (m, i) { m.classList.toggle("is-current", i === index); });
+      if (scopeMag && scopeMarks[index]) {
+        scopeMag.textContent = scopeMarks[index].getAttribute("data-mag") + "\u00d7";
+        scopeLabel.textContent = scopeMarks[index].getAttribute("data-label");
+      }
       links.forEach(function (a, i) {
         var on = i === index;
         a.classList.toggle("is-current", on);
@@ -88,6 +116,7 @@
     });
 
     function update() {
+      updateScope();
       if (locked) { lockUntilScrollEnds(); return; }
       var line = header.getBoundingClientRect().bottom + Math.min(160, window.innerHeight * 0.25);
       var index = 0;
@@ -107,8 +136,63 @@
     }
 
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    window.addEventListener("resize", function () { placeMarks(); onScroll(); });
+    window.addEventListener("load", placeMarks);
+    placeMarks();
     update();
+  }
+
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // ---- Big numbers count up when they scroll into view ----
+  function setUpCountUp() {
+    var nums = Array.prototype.slice.call(document.querySelectorAll("[data-count]"));
+    if (!nums.length || reduceMotion || !("IntersectionObserver" in window)) return;
+
+    function run(el) {
+      var text = el.getAttribute("data-count");
+      var m = text.match(/^([^0-9]*)([0-9][0-9,]*)(.*)$/);
+      if (!m) return;
+      var target = parseInt(m[2].replace(/,/g, ""), 10);
+      var useCommas = m[2].indexOf(",") !== -1;
+      var start = null, duration = 1200;
+      function frame(t) {
+        if (start === null) start = t;
+        var k = Math.min(1, (t - start) / duration);
+        var eased = 1 - Math.pow(1 - k, 3);
+        var n = Math.round(target * eased);
+        el.textContent = m[1] + (useCommas ? n.toLocaleString("en-US") : String(n)) + m[3];
+        if (k < 1) window.requestAnimationFrame(frame);
+      }
+      window.requestAnimationFrame(frame);
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { io.unobserve(e.target); run(e.target); }
+      });
+    }, { threshold: 0.6 });
+    nums.forEach(function (el) { io.observe(el); });
+  }
+
+  // ---- Cells in the counting grid drift slightly with the mouse ----
+  function setUpCells() {
+    var block = document.querySelector(".statement-block");
+    var cells = block && block.querySelector(".hero-cells");
+    if (!cells || reduceMotion || !window.matchMedia("(pointer: fine)").matches) return;
+    var pending = false, x = 0, y = 0;
+    block.addEventListener("mousemove", function (e) {
+      var r = block.getBoundingClientRect();
+      x = (e.clientX - r.left) / r.width - 0.5;
+      y = (e.clientY - r.top) / r.height - 0.5;
+      if (pending) return;
+      pending = true;
+      window.requestAnimationFrame(function () {
+        pending = false;
+        cells.style.transform = "translate(" + (x * -14).toFixed(1) + "px, " + (y * -10).toFixed(1) + "px)";
+      });
+    });
+    block.addEventListener("mouseleave", function () { cells.style.transform = ""; });
   }
 
   // Nav jumps land just below the sticky header, whatever its height.
@@ -127,6 +211,8 @@
       if (target) target.scrollIntoView();
     }
     setUpScrollSpy();
+    setUpCountUp();
+    setUpCells();
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);

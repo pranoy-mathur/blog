@@ -966,8 +966,9 @@ $counting-grid: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' wi
   }
 
   .section-title {
-    font-size: 1.6rem;
-    margin-top: 0.15rem;
+    font-size: 2rem;
+    line-height: 1.1;
+    margin-top: 0;
   }
 
   .section-body { max-width: $measure; }
@@ -997,4 +998,209 @@ $counting-grid: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' wi
   // Old category pages keep a single column.
   .home > .page-heading,
   .home > .post-list { max-width: $measure; }
+}
+
+
+// ---------- A little life: cells, stats, microscope gauge ----------
+
+// Stained cells sitting in the counting-chamber grid at the top of the page.
+.hero-cells {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: -2rem;
+  bottom: 0;
+  left: -2rem;
+  pointer-events: none;
+  transition: transform 0.6s ease-out;
+}
+
+.cell {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  animation: cell-drift-a 11s ease-in-out infinite alternate;
+}
+
+// Red cells: pale safranin discs with a lighter center.
+.cell.rbc {
+  width: 34px;
+  height: 34px;
+  background: radial-gradient(circle, rgba($safranin, 0.07) 0, rgba($safranin, 0.07) 34%, rgba($safranin, 0.2) 60%, rgba($safranin, 0.1) 72%, transparent 73%);
+}
+
+// White cells: a violet-stained lobed nucleus, like the one in your smear.
+.cell.wbc {
+  width: 50px;
+  height: 50px;
+  background:
+    radial-gradient(circle at 40% 42%, rgba($ink, 0.34) 0, rgba($ink, 0.34) 17%, transparent 19%),
+    radial-gradient(circle at 60% 52%, rgba($ink, 0.3) 0, rgba($ink, 0.3) 15%, transparent 17%),
+    radial-gradient(circle at 45% 64%, rgba($ink, 0.28) 0, rgba($ink, 0.28) 13%, transparent 15%),
+    radial-gradient(circle, rgba($ink, 0.08) 0, rgba($ink, 0.08) 66%, transparent 68%);
+}
+
+.c1  { top: 8%;  left: 58%; animation-duration: 13s; }
+.c2  { top: 18%; left: 66%; width: 28px; height: 28px; animation-name: cell-drift-b; }
+.c3  { top: 70%; left: 61%; animation-duration: 9s; }
+.c4  { top: 82%; left: 48%; width: 40px; height: 40px; animation-name: cell-drift-c; }
+.c5  { top: 6%;  left: 8%;  width: 26px; height: 26px; animation-duration: 15s; }
+.c6  { top: 88%; left: 12%; animation-name: cell-drift-b; animation-duration: 12s; }
+.c7  { top: 46%; left: 71%; width: 30px; height: 30px; animation-name: cell-drift-c; }
+.c8  { top: 30%; left: 55%; animation-duration: 16s; }
+.c9  { top: 60%; left: 76%; width: 38px; height: 38px; animation-duration: 10s; }
+.c10 { top: 12%; left: 36%; width: 24px; height: 24px; animation-name: cell-drift-b; }
+.c11 { top: 76%; left: 29%; animation-name: cell-drift-c; animation-duration: 14s; }
+
+// On phones, keep only a few so the name stays clear.
+@media screen and (max-width: 719px) {
+  .c1, .c2, .c7, .c8, .c10 { display: none; }
+  .c3  { top: 84%; left: 70%; }
+  .c9  { top: 4%;  left: 78%; }
+}
+
+@keyframes cell-drift-a {
+  0%   { transform: translate(0, 0); }
+  50%  { transform: translate(6px, -4px); }
+  100% { transform: translate(-3px, 5px); }
+}
+
+@keyframes cell-drift-b {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  50%  { transform: translate(-5px, 3px) rotate(8deg); }
+  100% { transform: translate(4px, -6px) rotate(-4deg); }
+}
+
+@keyframes cell-drift-c {
+  0%   { transform: translate(0, 0); }
+  50%  { transform: translate(3px, 6px); }
+  100% { transform: translate(-6px, -2px); }
+}
+
+// Big numbers at the top of a section. Plex Mono, since these are data.
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem 2rem;
+  margin: 0.25rem 0 2.5rem;
+
+  @media screen and (min-width: 720px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.stat {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  border-top: 2px solid $ink;
+  padding-top: 0.75rem;
+  margin: 0;
+}
+
+.stat-value {
+  margin: 0;
+  font-family: $font-mono;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: $ink;
+
+  .num { font-size: 1em; }
+
+  @media screen and (min-width: 1100px) { font-size: 2.3rem; }
+}
+
+.stat-unit {
+  font-size: 0.55em;
+  color: $graphite;
+}
+
+.stat-label {
+  margin: 0.45rem 0 0;
+  font-family: $font-heading;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: $graphite;
+}
+
+// Microscope gauge in the left margin of the homepage (very wide screens).
+.scope { display: none; }
+
+@media screen and (min-width: 1400px) {
+  .scope {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    position: fixed;
+    z-index: 5;
+    left: 32px;
+    top: 50%;
+    height: 44vh;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  .scope-track {
+    position: relative;
+    flex: 1 1 auto;
+    width: 14px;
+    background-image:
+      repeating-linear-gradient(to bottom, rgba($ink, 0.4) 0, rgba($ink, 0.4) 1px, transparent 1px, transparent 40px),
+      repeating-linear-gradient(to bottom, rgba($ink, 0.22) 0, rgba($ink, 0.22) 1px, transparent 1px, transparent 8px);
+    background-size: 14px 100%, 7px 100%;
+    background-repeat: no-repeat;
+    border-left: 1px solid rgba($ink, 0.3);
+  }
+
+  .scope-fill {
+    position: absolute;
+    top: 0;
+    left: -2px;
+    width: 3px;
+    height: 0;
+    background-color: $ink;
+    transition: height 0.15s linear;
+  }
+
+  .scope-mark {
+    position: absolute;
+    left: -6px;
+    width: 9px;
+    height: 9px;
+    margin-top: -4px;
+    border: 1.5px solid $ink;
+    border-radius: 50%;
+    background-color: $slide;
+    transition: background-color 0.2s ease;
+
+    &.is-current { background-color: $ink; }
+  }
+
+  .scope-readout {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+
+  .scope-mag {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: $ink;
+  }
+
+  .scope-label {
+    font-family: $font-heading;
+    font-size: 0.7rem;
+    color: $graphite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cell { animation: none; }
+  .hero-cells { transition: none; }
+  .scope-fill, .scope-mark { transition: none; }
 }
