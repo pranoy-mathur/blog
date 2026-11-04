@@ -2,9 +2,11 @@
   A post image stored in this repo.
   Usage: {% include figure.html dir="post-folder" n=1 alt="What the image shows" caption="Optional caption" %}
   Put the file at assets/images/posts/<dir>/<n>.jpg (or .jpeg, .png, .webp).
+  Add root="projects" to use assets/images/projects/<dir>/ instead.
   Until the file exists, a placeholder box shows where it goes.
 {%- endcomment -%}
-{%- assign fig_base = "/assets/images/posts/" | append: include.dir | append: "/" | append: include.n -%}
+{%- assign fig_root = include.root | default: "posts" -%}
+{%- assign fig_base = "/assets/images/" | append: fig_root | append: "/" | append: include.dir | append: "/" | append: include.n -%}
 {%- assign fig_exts = "jpg,jpeg,png,webp,JPG,JPEG,PNG" | split: "," -%}
 {%- assign fig_src = nil -%}
 {%- for ext in fig_exts -%}
@@ -15,5 +17,5 @@
 {%- if fig_src -%}
 <figure class="figure"><img src="{{ fig_src | relative_url }}" alt="{{ include.alt | escape }}" loading="lazy" decoding="async">{% if include.caption %}<figcaption>{{ include.caption }}</figcaption>{% endif %}</figure>
 {%- else -%}
-<div class="slot slot-image"><span class="slot-label">Image {{ include.n }}</span> <span class="slot-note">assets/images/posts/{{ include.dir }}/{{ include.n }}.jpg</span></div>
+<div class="slot slot-image"><span class="slot-label">Image {{ include.n }}</span> <span class="slot-note">assets/images/{{ fig_root }}/{{ include.dir }}/{{ include.n }}.jpg</span></div>
 {%- endif -%}

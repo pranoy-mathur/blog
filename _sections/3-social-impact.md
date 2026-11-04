@@ -11,4 +11,3 @@ image_alt: ""
 image_caption: ""
 ---
 
-{% include placeholder.html label="Intro (optional)" note="One or two sentences introducing this section. Delete this line if the list speaks for itself." %}

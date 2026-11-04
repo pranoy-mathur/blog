@@ -5,24 +5,23 @@ anchor: mun
 order: 4
 ---
 
-{% include placeholder.html label="Intro (optional)" note="One or two sentences introducing this section. Delete this line if the entries speak for themselves." %}
-
 ### Secretary-General, INYP/INMUN
 
 {% include placeholder.html label="Entry" note="What the conference is, what you are responsible for, and the scale." %}
 
 ### Director, National Health Authority committee, INYP 2025
 
-{% include placeholder.html label="Entry" note="What the committee covered and what directing it involved." %}
+Created and directed the National Health Authority committee at Inventure's 2025 conference, with an agenda on healthcare infrastructure and antimicrobial resistance.
 
-### Oxford MUN India and Oxford MUN Flagship
+### Oxford MUN India and Oxford MUN UK
 
-{% include placeholder.html label="Entry" note="Committees, portfolios and results at each." %}
+- **Oxford MUN India:** Best Delegate in the WHO committee, one of 7 awarded from 500+ delegates, with a scholarship to Oxford MUN's flagship conference in the UK.
+- **Oxford MUN UK, November 2024:** Outstanding Delegate (2nd place) in the Empress Wu Crisis committee, representing Yao Chong. [Read the post](/oxford-MUN-UK-2024/).
 
-### HSIS
+### Harvard Sustainability Impact Summit (HSIS)
 
-{% include placeholder.html label="Entry" note="What you did there and the result." %}
+Head Delegate. Best Team (1st place) in 2025, with a scholarship to the HPAIR conference at Harvard.
 
 ### President, Debate and Dialogue Club
 
-{% include placeholder.html label="Entry" note="What the club does and what you run." %}
+Mentored 50+ students in the club, several of whom have gone on to win at national conferences. Named one of MU20 School of Opportunity's 20 Under 20 Debaters in India in 2024. [Read the post](/2024/11/10/MU20-award.html).

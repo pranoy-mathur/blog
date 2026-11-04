@@ -1,31 +1,41 @@
 ---
 title: CareForAll
 order: 1
-# Fact check before filling in: your title is CEO and Head of Operations.
-# Never "founder", "co-founder" or "founded". The 1M1B UN summit is a
-# selection to present, not an award and not something that has happened.
-statement: ""
-role: ""
-dates: ""
-status: ""
+# Fact check: your title is CEO and Head of Operations. Never "founder",
+# "co-founder" or "founded". The 1M1B UN summit is a selection to present,
+# not an award and not something that has happened yet.
+statement: "A youth-led nonprofit providing free pediatric healthcare and health literacy to underprivileged children in Bengaluru."
+role: "CEO and Head of Operations"
+dates: "May 2025 to present"
+status: "Active. Selected to present at the 1M1B Activate Impact Summit at the UN in Geneva (November 2026)."
+links:
+  - { label: "careforall.org.in", url: "https://careforall.org.in" }
 ---
 
 ## Summary
 
-{% include placeholder.html label="Summary" note="Two or three sentences on what CareForAll is and who it serves." %}
+CareForAll runs free medical camps for children in government schools and bridge-school programs, mainly around Whitefield, and buys and distributes the prescribed medicines afterward. Alongside the camps, it runs health awareness sessions so children can look after their own health, hygiene and nutrition.
 
 ## My role
 
-{% include placeholder.html label="My role" note="What you took over, what you rebuilt, and what you run now." %}
+CareForAll was started in 2023 by another student, who has since left for college. I joined as its digital designer in Grade 9, then took it over in May 2025 and rebuilt it as CEO and Head of Operations, growing the team to 50+ members. I created its health awareness sessions and its antimicrobial resistance (AMR) program.
 
 ## Programs
 
-{% include placeholder.html label="Programs" note="Health camps, the awareness modules and the AMR program, one short paragraph or list each." %}
+- **Medical camps.** Free check-ups at Ramagondanahalli Government School, Government Higher Primary School (Devarabisanahalli) and the Samridhdhi Trust Bridge School Programme (Bellandur). Funds raised through crowdfunding, bake sales and food stalls pay for the prescribed medicines.
+- **Health awareness.** Four interactive modules on health, hygiene, nutrition and exercise.
+- **AMR program.** A three-part program on responsible antibiotic use: a children's curriculum module, take-home cards, and doctor-endorsed brochures for parents, printed in English, Hindi and Kannada.
 
 ## Reach
 
-{% include placeholder.html label="Reach" note="Verified figures only. Use the current numbers, not rounded up." %}
+- 3,500+ children reached to date
+- 500+ children given free check-ups and medicines
+- 2,000+ people reached through the AMR program
+- Rs 3 lakh raised for medicines
+- 15+ NGO and hospital partners
+- 50+ team members
 
 ## Partners and press
 
-{% include placeholder.html label="Partners and press" note="Partner organizations and coverage, with links where you can share them." %}
+- Featured in Bangalore Mirror, August 4, 2026: "Teen inspires change through grassroots healthcare effort" by Iffath Fathima.
+- Selected to present at the 1M1B Activate Impact Summit at the UN in Geneva, November 2026.
