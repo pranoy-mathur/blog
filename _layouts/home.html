@@ -79,6 +79,16 @@ layout: base
           {%- endfor -%}
         </ul>
       {%- endif -%}
+      {%- if s.honors -%}
+        <div class="honors">
+          <h3 class="honors-title">Honors and awards</h3>
+          <ul class="honors-list">
+            {%- for h in s.honors -%}
+            <li>{{ h.award | escape }}{% if h.year %} <span class="honors-year">{{ h.year }}</span>{% endif %}</li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- endif -%}
       </div>
     {%- endif -%}
 

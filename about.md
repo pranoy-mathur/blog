@@ -1,7 +1,7 @@
 ---
-# This address now points to the matching part of the homepage.
+# This address now points to the homepage.
 layout: redirect
 permalink: /about/
-redirect_to: /#about
+redirect_to: /
 sitemap: false
 ---

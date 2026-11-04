@@ -18,5 +18,11 @@ stats:
   - { value: "863", label: "compounds docked against AcrB" }
   - { value: "100", unit: "ns", label: "molecular dynamics simulation" }
   - { value: "2", label: "CREST Gold Awards" }
+# Honors and awards listed at the end of this section.
+honors:
+  - { award: "CREST Gold Award, British Science Association, for the AcrB screening", year: "2026" }
+  - { award: "CREST Gold Award, British Science Association, for the fibroblast model", year: "2026" }
+  - { award: "New York Academy of Sciences Project of Distinction, top 10 globally of 100+ teams", year: "2024" }
+  - { award: "Best Paper and Best Presentation, Science Beyond Curriculum", year: "2024" }
 ---
 

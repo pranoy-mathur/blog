@@ -1,4 +1,7 @@
 ---
+# Hidden from the site: honors now live in each section.
+# Delete the "published: false" line below to bring About back.
+published: false
 title: About
 anchor: about
 order: 6

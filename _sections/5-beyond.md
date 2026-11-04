@@ -2,6 +2,13 @@
 title: Beyond
 anchor: beyond
 order: 5
+# Honors and awards listed at the end of this section.
+honors:
+  - { award: "World Topper, Cambridge AS Level Mathematics, 100/100" }
+  - { award: "Cambridge ICE Award with Distinction" }
+  - { award: "Class Topper in Grades 9, 10 and 11" }
+  - { award: "ISSO Nationals Bronze, 110m hurdles" }
+  - { award: "ISSO U19 Nationals Gold in football, as part of the school team" }
 ---
 
 ### Tabla
