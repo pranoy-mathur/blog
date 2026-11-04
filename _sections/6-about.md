@@ -4,8 +4,6 @@ anchor: about
 order: 6
 ---
 
-{% include placeholder.html label="Biography" note="First person, in your own words. Keep to a few short paragraphs." %}
-
 ### Honors and awards
 
 - CREST Gold Award, British Science Association, for both the AcrB screening and the fibroblast model projects (2026)

@@ -36,12 +36,19 @@ layout: base
           {%- endif -%}
         </div>
       </div>
-      <h2 class="section-title" id="{{ s.anchor }}-title">{{ s.title | escape }}</h2>
-      {{ s.content }}
-      {%- include post-list.html posts=site.posts initial=s.posts_initial step=s.posts_step -%}
+      <div class="section-rail">
+        <h2 class="section-title" id="{{ s.anchor }}-title">{{ s.title | escape }}</h2>
+      </div>
+      <div class="section-main">
+        {{ s.content }}
+        {%- include post-list.html posts=site.posts initial=s.posts_initial step=s.posts_step -%}
+      </div>
     {%- else -%}
-      <h2 class="section-title" id="{{ s.anchor }}-title">{{ s.title | escape }}</h2>
-      {%- if s.image -%}{%- include section-figure.html section=s -%}{%- endif -%}
+      <div class="section-rail">
+        <h2 class="section-title" id="{{ s.anchor }}-title">{{ s.title | escape }}</h2>
+        {%- if s.image -%}{%- include section-figure.html section=s -%}{%- endif -%}
+      </div>
+      <div class="section-main">
       <div class="post-content section-body">
         {{ s.content }}
       </div>
@@ -64,6 +71,7 @@ layout: base
           {%- endfor -%}
         </ul>
       {%- endif -%}
+      </div>
     {%- endif -%}
 
   </section>

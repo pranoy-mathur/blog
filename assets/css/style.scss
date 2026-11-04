@@ -26,8 +26,15 @@ $type-small:       0.85rem;
 // Layout
 $measure:        40rem;   // text column, about 70 characters of body text
 $gutter-phone:   16px;    // side margin on phones
-$gutter-tablet:  8vw;     // left margin from 720px
-$gutter-desktop: 14vw;    // left margin from 1100px
+$gutter-tablet:  32px;    // side margin from 720px
+
+// Wide screens (1100px and up): a left rail for section titles and a main
+// column, centered on the page.
+$wide:      1100px;
+$rail:      15rem;
+$rail-gap:  3.5rem;
+$main:      46rem;
+$container: $rail + $rail-gap + $main;
 
 
 // =====================================================================
@@ -158,18 +165,14 @@ blockquote {
 // ---------- Layout: left-aligned single column, wide left margin ----------
 
 .wrapper {
-  max-width: none;
-  margin: 0;
+  max-width: $container;
+  margin: 0 auto;
   padding-left: $gutter-phone;
   padding-right: $gutter-phone;
 
   @media screen and (min-width: 720px) {
     padding-left: $gutter-tablet;
-    padding-right: 32px;
-  }
-
-  @media screen and (min-width: 1100px) {
-    padding-left: $gutter-desktop;
+    padding-right: $gutter-tablet;
   }
 }
 
@@ -415,12 +418,10 @@ $counting-grid: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' wi
     gap: 2.5rem;
   }
 
-  // Wide screens: the photo moves into the right margin, like section images.
-  @media screen and (min-width: 1280px) {
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 18.75rem;  // the photo's height, so it never overlaps the header
+  // Wide screens: name on the left, photo on the right.
+  @media screen and (min-width: $wide) {
+    flex-direction: row;
+    justify-content: space-between;
   }
 }
 
@@ -479,13 +480,7 @@ $counting-grid: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' wi
 
   @media screen and (min-width: 720px) { width: 11rem; }
 
-  @media screen and (min-width: 1280px) {
-    position: absolute;
-    top: 50%;
-    left: calc(100% + 3.5rem);
-    width: 15rem;
-    transform: translateY(-50%);
-  }
+  @media screen and (min-width: $wide) { width: $rail; }
 
   img {
     display: block;
@@ -503,7 +498,7 @@ $counting-grid: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' wi
     flex-direction: column;
     justify-content: center;
 
-    @media screen and (min-width: 1280px) { min-height: 18.75rem; }
+    @media screen and (min-width: $wide) { min-height: 18.75rem; }
   }
 }
 
@@ -667,8 +662,6 @@ $counting-grid: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' wi
 
 
 // Optional image beside a section (one of your micrographs or bench photos).
-// Wide screens: in the right margin. Narrower: under the section title.
-.site-section.has-figure { position: relative; }
 
 .section-figure {
   box-sizing: border-box;
@@ -680,14 +673,13 @@ $counting-grid: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' wi
     margin: 0 0 1.75rem;
   }
 
-  @media screen and (min-width: 1280px) {
-    position: absolute;
-    top: 2.75rem;
-    left: calc(100% + 3.5rem);
-    width: 15rem;
+  // Wide screens: under the section title in the left rail.
+  @media screen and (min-width: $wide) {
+    width: 100%;
+    max-width: none;
 
     &,
-    &.slot { margin: 0; }
+    &.slot { margin: 0.5rem 0 0; }
   }
 
   img {
@@ -940,4 +932,69 @@ $counting-grid: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' wi
   }
 
   a:hover { color: $safranin; }
+}
+
+
+// ---------- Wide screens: rail + main column ----------
+
+@media screen and (min-width: $wide) {
+  // The title sits over the rail, so the nav lines up with the main column.
+  .site-header .wrapper { column-gap: 0; }
+
+  .site-title,
+  .site-title:visited {
+    width: $rail;
+    margin-right: $rail-gap;
+  }
+
+  .page-content .wrapper > * { max-width: none; }
+
+  .site-section {
+    display: grid;
+    grid-template-columns: $rail minmax(0, $main);
+    column-gap: $rail-gap;
+    align-items: start;
+
+    > .statement-block { grid-column: 1 / -1; }
+  }
+
+  // Section titles stay in view while you read the section.
+  .section-rail {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 6rem;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+    margin-top: 0.15rem;
+  }
+
+  .section-body { max-width: $measure; }
+
+  // Posts and projects in two columns.
+  .section-main .post-list,
+  .entry-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2.5rem;
+  }
+
+  .section-main .post-list > li:nth-child(-n+2),
+  .entry-list > .entry:nth-child(-n+2) { border-top: 0; padding-top: 0.25rem; }
+
+  .post-list-controls { margin-top: 1.25rem; }
+
+  // Post and project pages: the text lines up with the main column.
+  .post,
+  .project {
+    margin-left: $rail + $rail-gap;
+    max-width: $main;
+  }
+
+  .post-content { max-width: $measure; }
+
+  // Old category pages keep a single column.
+  .home > .page-heading,
+  .home > .post-list { max-width: $measure; }
 }
