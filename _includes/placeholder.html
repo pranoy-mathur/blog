@@ -4,7 +4,8 @@
   Delete the whole include line when you write the real text.
   Add inline=true for a small slot inside a sentence or table cell.
 {%- endcomment -%}
-{%- if include.inline -%}
+{%- if site.show_placeholders == false -%}
+{%- elsif include.inline -%}
 <span class="slot slot-inline">{{ include.label | default: "to fill" }}</span>
 {%- else -%}
 <div class="slot"><span class="slot-label">{{ include.label }}</span>{% if include.note %} <span class="slot-note">{{ include.note }}</span>{% endif %}</div>

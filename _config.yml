@@ -25,6 +25,10 @@ plugins:
 
 show_excerpts: true
 
+# Dashed boxes marking content you still have to write. false hides them all
+# (use this on the live site); true shows them while you are filling things in.
+show_placeholders: false
+
 collections:
   # The homepage sections, in the order set by each file's `order:`.
   # They also make the top navigation. Six is the agreed ceiling.

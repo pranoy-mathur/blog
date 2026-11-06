@@ -38,7 +38,7 @@ layout: base
           </div>
           {%- if hero_photo -%}
             <figure class="hero-photo"><img src="{{ s.photo | relative_url }}" alt="{{ s.photo_alt | default: site.author.name | escape }}"></figure>
-          {%- else -%}
+          {%- elsif site.show_placeholders != false -%}
             <div class="hero-photo slot slot-image"><span class="slot-label">Photo</span> <span class="slot-note">Set photo: in _sections/1-blog.md</span></div>
           {%- endif -%}
         </div>
@@ -74,7 +74,7 @@ layout: base
             {%- if entry.status and entry.status != "" -%}
               <p class="entry-meta">{{ entry.status }}</p>
             {%- endif -%}
-            <p class="entry-more"><a href="{{ entry.url | relative_url }}">Summary, methods and results</a></p>
+            <p class="entry-more"><a href="{{ entry.url | relative_url }}">Project details</a></p>
           </li>
           {%- endfor -%}
         </ul>

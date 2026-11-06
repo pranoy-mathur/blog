@@ -17,7 +17,7 @@
   <span class="section-figure-media"><img src="{{ sf.image | relative_url }}" alt="{{ sf.image_alt | escape }}" loading="lazy" decoding="async"></span>
   {%- if sf.image_caption and sf.image_caption != "" -%}<figcaption>{{ sf.image_caption }}</figcaption>{%- endif -%}
 </figure>
-{%- else -%}
+{%- elsif site.show_placeholders != false -%}
 <div class="section-figure slot slot-image">
   <span class="slot-label">Section image</span>
   <span class="slot-note">One of your own micrographs or bench photos. Set image: in this section's file.</span>

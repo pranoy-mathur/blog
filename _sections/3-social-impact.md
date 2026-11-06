@@ -5,10 +5,9 @@ anchor: social-impact
 order: 3
 # Lists the project pages in _projects/social-impact/.
 projects: social-impact
-# Optional image beside this section, tinted to the site colors.
-image: ""
-image_alt: ""
-image_caption: ""
+# To add an image beside this section, add lines like these:
+#   image: /assets/images/sections/community.jpg
+#   image_alt: "What the photo shows"
 # Big numbers shown at the top of this section. They count up on screen.
 stats:
   - { value: "3,500+", label: "children reached" }

@@ -25,9 +25,21 @@ layout: base
     {%- endif -%}
 
     <dl class="project-meta">
-      <div class="meta-row"><dt>Role</dt><dd>{% if page.role and page.role != "" %}{{ page.role }}{% else %}{% include placeholder.html inline=true %}{% endif %}</dd></div>
-      <div class="meta-row"><dt>Dates</dt><dd>{% if page.dates and page.dates != "" %}{{ page.dates }}{% else %}{% include placeholder.html inline=true %}{% endif %}</dd></div>
-      <div class="meta-row"><dt>Status</dt><dd>{% if page.status and page.status != "" %}{{ page.status }}{% else %}{% include placeholder.html inline=true %}{% endif %}</dd></div>
+      {%- if page.role and page.role != "" -%}
+      <div class="meta-row"><dt>Role</dt><dd>{{ page.role }}</dd></div>
+      {%- elsif site.show_placeholders != false -%}
+      <div class="meta-row"><dt>Role</dt><dd>{% include placeholder.html inline=true %}</dd></div>
+      {%- endif -%}
+      {%- if page.dates and page.dates != "" -%}
+      <div class="meta-row"><dt>Dates</dt><dd>{{ page.dates }}</dd></div>
+      {%- elsif site.show_placeholders != false -%}
+      <div class="meta-row"><dt>Dates</dt><dd>{% include placeholder.html inline=true %}</dd></div>
+      {%- endif -%}
+      {%- if page.status and page.status != "" -%}
+      <div class="meta-row"><dt>Status</dt><dd>{{ page.status }}</dd></div>
+      {%- elsif site.show_placeholders != false -%}
+      <div class="meta-row"><dt>Status</dt><dd>{% include placeholder.html inline=true %}</dd></div>
+      {%- endif -%}
       {%- if page.links -%}
       <div class="meta-row"><dt>Links</dt><dd>
         {%- for link in page.links -%}

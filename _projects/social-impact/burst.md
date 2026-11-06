@@ -22,14 +22,6 @@ India restricts the sale of many antibiotics without a prescription under Schedu
 3. Each audit is entered through a form that checks responses against Schedule H1 rules.
 4. Results are mapped by zone on the public dashboard, with each pharmacy given a code so none is counted twice.
 
-## Technical challenges
-
-{% include placeholder.html label="Technical challenges" note="What was hard and how you dealt with it, for example designing audit questions that pharmacists answer naturally." %}
-
-## Results and limitations
-
-{% include placeholder.html label="Results and limitations" note="What the 45 audits show so far, and what the data cannot show." %}
-
 ## Technologies used
 
 React, TypeScript, Cloudflare Pages

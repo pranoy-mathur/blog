@@ -16,6 +16,6 @@
 {%- endfor -%}
 {%- if fig_src -%}
 <figure class="figure"><img src="{{ fig_src | relative_url }}" alt="{{ include.alt | escape }}" loading="lazy" decoding="async">{% if include.caption %}<figcaption>{{ include.caption }}</figcaption>{% endif %}</figure>
-{%- else -%}
+{%- elsif site.show_placeholders != false -%}
 <div class="slot slot-image"><span class="slot-label">Image {{ include.n }}</span> <span class="slot-note">assets/images/{{ fig_root }}/{{ include.dir }}/{{ include.n }}.jpg</span></div>
 {%- endif -%}
