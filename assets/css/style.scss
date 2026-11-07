@@ -516,7 +516,8 @@ $counting-grid: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' wi
   // Each post is a white card with its photo on top.
   > li {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: stretch;
     margin: 0;
     padding: 0;
     border: 0;
@@ -1385,11 +1386,21 @@ $counting-grid: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' wi
 
 // ---------- Post cards ----------
 
+// A small photo on the left of each card.
 .post-thumb {
   display: block;
+  flex: 0 0 4.75rem;
+  align-self: flex-start;
   position: relative;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 1 / 1;
+  margin: 1rem 0 1rem 1rem;
+  border-radius: 6px;
   overflow: hidden;
+
+  @media screen and (min-width: 720px) {
+    flex-basis: 6.5rem;
+    margin: 1.1rem 0 1.1rem 1.1rem;
+  }
   background-color: $slide;
 
   img {
@@ -1422,8 +1433,6 @@ $counting-grid: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' wi
 }
 
 .post-thumb {
-  @media screen and (min-width: 720px) { aspect-ratio: 2 / 1; }
-
   .feature-cells {
     position: absolute;
     top: 0;
@@ -1434,7 +1443,14 @@ $counting-grid: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' wi
 }
 
 // Vary the cell layout so neighboring placeholder cards don't look identical.
+.post-thumb .feature-cells span { transform: scale(0.45); }
 .post-list > li:nth-child(3n+2) .post-thumb .feature-cells { transform: scaleX(-1); }
 .post-list > li:nth-child(3n) .post-thumb .feature-cells { transform: rotate(180deg); }
 
-.post-card-body { padding: 1.1rem 1.35rem 1.35rem; }
+.post-card-body {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 0.9rem 1.1rem 1rem;
+
+  @media screen and (min-width: 720px) { padding: 1rem 1.35rem 1.1rem; }
+}
