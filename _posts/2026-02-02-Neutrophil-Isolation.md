@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Immunology Assays: Neutrophil Isolation [4/7]"
-date: 2025-08-02
+date: 2026-02-02
 categories: [biology]
 tags: [immunology, STEM, biology, assays, internship]
 ---

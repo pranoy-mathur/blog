@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Immunology Assays: Ouchterlony Double Diffusion [6/7]"
-date: 2025-08-06
+date: 2026-02-16
 categories: [biology]
 tags: [immunology, STEM, biology, assays, internship]
 ---

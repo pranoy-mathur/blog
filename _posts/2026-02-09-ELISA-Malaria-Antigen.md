@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Immunology Assays: ELISA (Malaria Antigen) [5/7]"
-date: 2025-08-04
+date: 2026-02-09
 categories: [biology]
 tags: [immunology, STEM, biology, assays, internship]
 ---
