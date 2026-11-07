@@ -15,8 +15,24 @@ photo: ""
 photo_alt: "Pranoy Mathur"
 # Optional single sentence under your name (and under the roles, if any).
 statement: "In the lab, in the community, in the debate room, on the field, and on stage."
-# How many posts show at first, and how many each "Show more posts" adds.
-# "Show fewer posts" goes back to the first number.
-posts_initial: 4
-posts_step: 4
+# How many posts show at first. "Show all posts" shows the rest, and
+# "Show fewer posts" goes back to this number.
+posts_initial: 6
+posts_step: all
+# Posts pinned to the top of the blog, in this order. Use each post's file
+# name without the date and .md, e.g. 2024-12-28-Oxford-MUN-UK.md -> Oxford-MUN-UK
+pinned:
+  - Oxford-MUN-UK
+  - apple-pie
+  - Immunology-Intro
+  - ISSO-athletics
+# Lab-notebook series (posts titled "Series Name: Post [2/7]") are kept out
+# of the main list and shown as cards instead, in this order.
+series_order:
+  - Immunology Assays
+  - Cell Culture Techniques
+  - Microbiology Experiments
+  - Biochemistry Experiments
+  - Molecular Biology Experiments
+  - Genetic Engineering Experiments
 ---

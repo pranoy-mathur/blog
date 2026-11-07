@@ -1,0 +1,34 @@
+{%- comment -%}
+  One card per lab-notebook series, linking to its part of /lab-notebook/.
+  Usage: {% include series-cards.html order=page_or_section.series_order %}
+{%- endcomment -%}
+{%- if include.order and include.order.size > 0 -%}
+<div class="series-block">
+  <h3 class="series-block-title">Lab notebook</h3>
+  <p class="series-block-note">Write-ups of the lab techniques I learned, grouped into series.</p>
+  <ul class="series-cards">
+    {%- for name in include.order -%}
+      {%- assign sc_prefix = name | append: ": " -%}
+      {%- assign sc_posts = site.posts | where_exp: "p", "p.title contains sc_prefix" | reverse -%}
+      {%- if sc_posts.size == 0 -%}{%- continue -%}{%- endif -%}
+      {%- assign sc_thumb = nil -%}
+      {%- for p in sc_posts -%}
+        {%- if p.content contains '<img src="' -%}
+          {%- assign sc_thumb = p.content | split: '<img src="' | slice: 1, 1 | first | split: '"' | first -%}{%- break -%}
+        {%- endif -%}
+      {%- endfor -%}
+    <li>
+      <a class="series-card" href="{{ '/lab-notebook/' | relative_url }}#{{ name | slugify }}">
+        <span class="post-thumb{% unless sc_thumb %} is-pattern{% endunless %}" aria-hidden="true">
+          {%- if sc_thumb -%}<img src="{{ sc_thumb | relative_url }}" alt="" loading="lazy" decoding="async">{%- else -%}<span class="feature-cells"><span></span><span></span><span></span><span></span><span></span></span>{%- endif -%}
+        </span>
+        <span class="series-card-body">
+          <span class="series-card-title">{{ name }}</span>
+          <span class="series-card-meta">{{ sc_posts.size }} parts</span>
+        </span>
+      </a>
+    </li>
+    {%- endfor -%}
+  </ul>
+</div>
+{%- endif -%}

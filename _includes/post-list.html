@@ -26,7 +26,7 @@
       {%- endif -%}
     </a>
     <div class="post-card-body">
-      <time class="post-meta" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>
+      <p class="post-meta">{% if include.pinned contains post.slug %}<span class="pin-label">Pinned</span>{% endif %}<time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time></p>
       <h3><a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
       {%- if site.show_excerpts and post.excerpt -%}
       <div class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 28 }}</div>
@@ -37,7 +37,7 @@
 </ul>
 {%- if include.initial and include.posts.size > include.initial -%}
 <div class="post-list-controls" hidden>
-  <button type="button" class="more-posts">Show more posts</button>
+  <button type="button" class="more-posts">{% if include.step == "all" %}Show all posts{% else %}Show more posts{% endif %}</button>
   <button type="button" class="fewer-posts" hidden>Show fewer posts</button>
 </div>
 {%- endif -%}

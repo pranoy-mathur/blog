@@ -1,0 +1,62 @@
+---
+layout: base
+---
+{%- comment -%}
+  Minima's post layout, plus series links for lab-notebook posts.
+{%- endcomment -%}
+{%- include series-info.html post=page -%}
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+    <p class="post-meta">
+      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        {{ page.date | date: date_format }}
+      </time>
+      {%- if page.modified_date -%}
+        ~ 
+        {%- assign mdate = page.modified_date | date_to_xmlschema -%}
+        <time class="dt-modified" datetime="{{ mdate }}" itemprop="dateModified">
+          {{ mdate | date: date_format }}
+        </time>
+      {%- endif -%}
+      {%- if page.author -%}
+        • {% for author in page.author %}
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">{{ author }}</span></span>
+            {%- if forloop.last == false %}, {% endif -%}
+        {% endfor %}
+      {%- endif -%}</p>
+    {%- if series_name -%}
+      {%- for p in series_posts -%}{%- if p.url == page.url -%}{%- assign series_index = forloop.index -%}{%- endif -%}{%- endfor -%}
+      <p class="series-label">Part {{ series_index }} of {{ series_posts.size }} in <a href="{{ '/lab-notebook/' | relative_url }}#{{ series_anchor }}">{{ series_name }}</a></p>
+    {%- endif -%}
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    {{ content }}
+  </div>
+
+  {%- if series_name -%}
+    {%- assign prev_i = series_index | minus: 2 -%}
+    {%- assign next_i = series_index -%}
+    <nav class="series-nav" aria-label="{{ series_name }} series">
+      {%- if series_index > 1 -%}
+        {%- assign sp = series_posts[prev_i] -%}
+        <a class="series-prev" href="{{ sp.url | relative_url }}"><span>Previous</span>{{ sp.title | split: ": " | last | escape }}</a>
+      {%- else -%}<span></span>{%- endif -%}
+      {%- if series_index < series_posts.size -%}
+        {%- assign sn = series_posts[next_i] -%}
+        <a class="series-next" href="{{ sn.url | relative_url }}"><span>Next</span>{{ sn.title | split: ": " | last | escape }}</a>
+      {%- endif -%}
+    </nav>
+    <p class="series-all"><a href="{{ '/lab-notebook/' | relative_url }}#{{ series_anchor }}">All parts of {{ series_name }}</a></p>
+  {%- endif -%}
+
+  {%- if site.disqus.shortname -%}
+    {%- include disqus_comments.html -%}
+  {%- endif -%}
+
+  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+</article>

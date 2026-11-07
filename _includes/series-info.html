@@ -1,0 +1,17 @@
+{%- comment -%}
+  Works out whether a post is part of a lab-notebook series, from its title.
+  A series title looks like "Series Name: Post Name [2/7]".
+  Sets: series_name (or nil), series_posts (oldest first), series_anchor.
+{%- endcomment -%}
+{%- assign series_name = nil -%}
+{%- assign series_posts = nil -%}
+{%- assign si_title = include.post.title | default: "" -%}
+{%- if si_title contains ": " and si_title contains " [" -%}
+  {%- assign si_tail = si_title | split: " [" | last -%}
+  {%- if si_tail contains "/" and si_tail contains "]" -%}
+    {%- assign series_name = si_title | split: ": " | first -%}
+    {%- assign si_prefix = series_name | append: ": " -%}
+    {%- assign series_posts = site.posts | where_exp: "p", "p.title contains si_prefix" | reverse -%}
+    {%- assign series_anchor = series_name | slugify -%}
+  {%- endif -%}
+{%- endif -%}

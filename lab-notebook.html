@@ -1,0 +1,26 @@
+---
+layout: page
+title: Lab notebook
+permalink: /lab-notebook/
+---
+{%- comment -%}
+  Every lab-notebook series, each in part order. The series and their order
+  come from series_order in _sections/1-blog.md.
+{%- endcomment -%}
+{%- assign blog_section = site.sections | where: "kind", "blog" | first -%}
+<p>Write-ups of the lab techniques I learned, grouped into series. Each series is listed in order, from part 1.</p>
+
+<nav class="series-jump" aria-label="Series">
+{%- for name in blog_section.series_order -%}
+  <a href="#{{ name | slugify }}">{{ name }}</a>
+{%- endfor -%}
+</nav>
+
+{%- for name in blog_section.series_order -%}
+{%- assign ln_prefix = name | append: ": " -%}
+{%- assign ln_posts = site.posts | where_exp: "p", "p.title contains ln_prefix" | reverse -%}
+<section class="series-section" id="{{ name | slugify }}">
+  <h2>{{ name }} <span class="series-count">{{ ln_posts.size }} parts</span></h2>
+  {%- include post-list.html posts=ln_posts -%}
+</section>
+{%- endfor -%}

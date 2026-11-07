@@ -5,8 +5,9 @@
   // ---- Blog list: show a few posts, more on request, and back again ----
   function setUpPostList(list) {
     var initial = parseInt(list.getAttribute("data-initial"), 10);
-    var step = parseInt(list.getAttribute("data-step"), 10) || 5;
     var items = Array.prototype.slice.call(list.children);
+    // data-step="all" shows every remaining post at once.
+    var step = list.getAttribute("data-step") === "all" ? items.length : (parseInt(list.getAttribute("data-step"), 10) || 5);
     var controls = list.nextElementSibling;
     if (!initial || items.length <= initial || !controls || !controls.classList.contains("post-list-controls")) return;
     var more = controls.querySelector(".more-posts");

@@ -48,7 +48,21 @@ layout: base
       </div>
       <div class="section-main">
         {{ s.content }}
-        {%- include post-list.html posts=site.posts initial=s.posts_initial step=s.posts_step -%}
+        {%- comment -%} Pinned posts first, then every other post that is not part of a series. {%- endcomment -%}
+        {%- assign blog_pins = s.pinned | default: empty -%}
+        {%- assign blog_list = "" | split: "" -%}
+        {%- for slug in blog_pins -%}
+          {%- assign pp = site.posts | where: "slug", slug | first -%}
+          {%- if pp -%}{%- assign blog_list = blog_list | push: pp -%}{%- endif -%}
+        {%- endfor -%}
+        {%- for p in site.posts -%}
+          {%- if blog_pins contains p.slug -%}{%- continue -%}{%- endif -%}
+          {%- include series-info.html post=p -%}
+          {%- if series_name -%}{%- continue -%}{%- endif -%}
+          {%- assign blog_list = blog_list | push: p -%}
+        {%- endfor -%}
+        {%- include post-list.html posts=blog_list initial=s.posts_initial step=s.posts_step pinned=blog_pins -%}
+        {%- include series-cards.html order=s.series_order -%}
       </div>
     {%- else -%}
       <div class="section-rail">
