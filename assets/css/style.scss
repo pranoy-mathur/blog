@@ -507,11 +507,26 @@ $counting-grid: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' wi
   margin: 0;
   padding: 0;
 
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+
+  @media screen and (min-width: 720px) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  // Each post is a white card with its photo on top.
   > li {
-    border-top: 1px solid $buff;
-    padding: 1.4rem 0 1.5rem;
+    display: flex;
+    flex-direction: column;
     margin: 0;
+    padding: 0;
+    border: 0;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba($ink, 0.06), 0 10px 28px -18px rgba($ink, 0.35);
   }
+
+  > li[hidden] { display: none; }
 
   h3 {
     font-size: 1.2rem;
@@ -1033,16 +1048,12 @@ $counting-grid: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' wi
   .section-body { max-width: $measure; }
 
   // Posts and projects in two columns.
-  .section-main .post-list,
   .entry-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 2.5rem;
   }
 
-  .section-main .post-list { column-gap: 3rem; }
-
-  .section-main .post-list > li:nth-child(-n+2),
   .entry-list > .entry:nth-child(-n+2) { border-top: 0; padding-top: 0.25rem; }
 
   .post-list-controls { margin-top: 1.25rem; }
@@ -1370,3 +1381,60 @@ $counting-grid: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' wi
 
   a:hover { text-decoration: underline; }
 }
+
+
+// ---------- Post cards ----------
+
+.post-thumb {
+  display: block;
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: $slide;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  // No photo in the post yet: the counting-chamber grid with stained cells.
+  &.is-pattern {
+    background-image:
+      linear-gradient(rgba($ink, 0.09) 1px, transparent 1px),
+      linear-gradient(90deg, rgba($ink, 0.09) 1px, transparent 1px),
+      linear-gradient(rgba($ink, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba($ink, 0.05) 1px, transparent 1px);
+    background-size: 64px 64px, 64px 64px, 16px 16px, 16px 16px;
+  }
+}
+
+.post-list > li:hover .post-thumb img { transform: scale(1.03); }
+
+@media (prefers-reduced-motion: reduce) {
+  .post-thumb img { transition: none; }
+  .post-list > li:hover .post-thumb img { transform: none; }
+}
+
+.post-thumb {
+  @media screen and (min-width: 720px) { aspect-ratio: 2 / 1; }
+
+  .feature-cells {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+// Vary the cell layout so neighboring placeholder cards don't look identical.
+.post-list > li:nth-child(3n+2) .post-thumb .feature-cells { transform: scaleX(-1); }
+.post-list > li:nth-child(3n) .post-thumb .feature-cells { transform: rotate(180deg); }
+
+.post-card-body { padding: 1.1rem 1.35rem 1.35rem; }

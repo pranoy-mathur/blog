@@ -5,12 +5,33 @@
 {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
 <ul class="post-list"{% if include.initial %} data-initial="{{ include.initial }}" data-step="{{ include.step | default: 5 }}"{% endif %}>
   {%- for post in include.posts -%}
-  <li>
-    <time class="post-meta" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>
-    <h3><a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
-    {%- if site.show_excerpts and post.excerpt -%}
-    <div class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 40 }}</div>
+  {%- comment -%}
+    The photo on each post card: image: in the post's front matter if set,
+    otherwise the first photo in the post. With neither, a stained-cell panel.
+  {%- endcomment -%}
+  {%- assign thumb = post.image -%}
+  {%- if thumb == nil or thumb == "" -%}
+    {%- if post.content contains '<img src="' -%}
+      {%- assign thumb = post.content | split: '<img src="' | slice: 1, 1 | first | split: '"' | first -%}
+    {%- else -%}
+      {%- assign thumb = nil -%}
     {%- endif -%}
+  {%- endif -%}
+  <li>
+    <a class="post-thumb{% unless thumb %} is-pattern{% endunless %}" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true">
+      {%- if thumb -%}
+        <img src="{{ thumb | relative_url }}" alt="" loading="lazy" decoding="async"{% if post.image_position %} style="object-position: {{ post.image_position }}"{% endif %}>
+      {%- else -%}
+        <span class="feature-cells"><span></span><span></span><span></span><span></span><span></span></span>
+      {%- endif -%}
+    </a>
+    <div class="post-card-body">
+      <time class="post-meta" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>
+      <h3><a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+      {%- if site.show_excerpts and post.excerpt -%}
+      <div class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 28 }}</div>
+      {%- endif -%}
+    </div>
   </li>
   {%- endfor -%}
 </ul>
