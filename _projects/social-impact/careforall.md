@@ -42,7 +42,7 @@ CareForAll was started in 2023 by another student, who has since left for colleg
 - 3,500+ children reached to date
 - 500+ children given free check-ups and medicines
 - 2,000+ people reached through the AMR program
-- Rs 3 lakh raised for medicines
+- Rs 2 lakh+ raised
 - 15+ NGO and hospital partners
 - 50+ team members
 

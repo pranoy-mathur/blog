@@ -21,7 +21,9 @@ entries:
     caption: "National medalist"
     position: "80% 40%"
     body: |
-      Competing since 2018 in the 400m, long jump and 110m hurdles, including at the state championships. ISSO Nationals Bronze in the 110m hurdles. [Read the post](/ISSO-athletics/).
+      Competing since 2018 in the 400m, long jump and 110m hurdles, including at the state championships. ISSO Nationals Bronze (U17) in the 110m hurdles. [Read the post](/ISSO-athletics/).
+
+      28 medals in all: 11 at inter-school meets (7 gold, 4 silver) and 17 at inter-house meets.
   - title: "Football"
     image: /assets/images/features/football.jpg
     image_alt: "Pranoy with football trophies at the ISSO Games"

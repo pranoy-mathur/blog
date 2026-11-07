@@ -9,10 +9,11 @@ order: 4
 #             as "left-right% top-bottom%". "50% 30%" keeps the upper middle.
 #   Leave image out for a stained-cell panel instead of a photo.
 entries:
-  - title: "Director, National Health Authority committee, INYP 2025"
-    caption: "Committee director"
+  - title: "Inventure MUN (INYP) Secretariat"
+    caption: "360 delegates"
     body: |
-      Created and directed the National Health Authority committee at Inventure's 2025 conference, with an agenda on healthcare infrastructure and antimicrobial resistance.
+      - **Under-Secretary-General of Communications:** led outreach for the conference, which drew 360 delegates.
+      - **Director, National Health Authority committee (2025):** created and directed a committee on healthcare infrastructure and antimicrobial resistance.
   - title: "Oxford MUN India and Oxford MUN UK"
     image: /assets/images/posts/oxford-mun-uk-2024/4.jpg
     image_alt: "Pranoy on stage with other award winners at Oxford MUN"
@@ -34,11 +35,12 @@ entries:
     caption: "Best delegate at a national conference"
     position: "50% 30%"
     body: |
-      Mentored 50+ students in the club, several of whom have gone on to win at national conferences. Named one of MU20 School of Opportunity's 20 Under 20 Debaters in India in 2024. [Read the post](/2024/11/10/MU20-award.html).
+      Mentored 50+ students in the club, several of whom have gone on to win at national conferences. Best Delegate at the MU20 High School Summit, a national conference. Named one of MU20 School of Opportunity's 20 Under 20 Debaters in India in 2024. [Read the post](/2024/11/10/MU20-award.html).
 # Honors and awards listed at the end of this section.
 honors:
   - { award: "Best Team (1st place), Harvard Sustainability Impact Summit, with a scholarship to HPAIR", year: "2025" }
   - { award: "Best Delegate (WHO committee), Oxford MUN India, with a scholarship to Oxford MUN UK", year: "2024" }
   - { award: "Outstanding Delegate (2nd place), Empress Wu Crisis committee, Oxford MUN UK", year: "2024" }
   - { award: "MU20 School of Opportunity 20 Under 20 Debaters in India", year: "2024" }
+  - { award: "Best Delegate, MU20 High School Summit (national)" }
 ---

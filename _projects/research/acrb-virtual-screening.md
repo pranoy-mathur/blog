@@ -1,19 +1,20 @@
 ---
 title: AcrB efflux pump virtual screening
 order: 1
-# Fact check: ACCEPTED at NHSJS, pending publication. Not published yet.
-# All figures below are from the accepted version (template 4DX5, top hit
+# Fact check: PUBLISHED in NHSJS, a peer-reviewed journal, November 3, 2026.
+# All figures below are from the published version (template 4DX5, top hit
 # Glabroisoflavanone B). Nothing from the older 3d9b / Ovigerine version.
 statement: "A computational screen of Indian medicinal plant compounds against AcrB, the pump Salmonella uses to push antibiotics out of the cell."
 role: "Sole author"
 dates: "2026"
-status: "Accepted at the National High School Journal of Science (October 11, 2026), pending publication. CREST Gold Award."
+status: "Published in a peer-reviewed journal, the National High School Journal of Science (NHSJS), November 2026. CREST Gold Award."
 links:
+  - { label: "Read the paper (NHSJS)", url: "https://nhsjs.com/2026/computational-screening-of-indian-phytochemicals-as-candidate-efflux-pump-inhibitors-of-salmonella-acrb/" }
   - { label: "Data and code (Zenodo)", url: "https://doi.org/10.5281/zenodo.23356930" }
 # Card on the homepage: photo, short label on it, and how to fit it.
 thumb: /assets/images/projects/acrb-virtual-screening/1.jpg
 thumb_alt: "The top hit docked in the AcrB binding pocket"
-thumb_caption: "Accepted for publication"
+thumb_caption: "Published in a peer-reviewed journal"
 thumb_fit: contain
 ---
 

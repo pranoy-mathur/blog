@@ -21,7 +21,7 @@ Scars form when inflammation after a deep wound does not switch off. Fibroblasts
 
 We built an in-vitro model by "licensing" human dermal fibroblasts with inflammatory cytokines so they behave like cells in a scarring wound. We then tested two cell-free treatments: PLAY, a growth-factor preparation developed by iCrest, and conditioned medium from umbilical cord mesenchymal stem cells (UC-MSC-CM).
 
-My part was the IL-8 ELISA and the scratch migration assay, and I wrote the Results and Discussion for the paper. The work followed a six-week training program at iCrest, and I presented it to an audience including the Board of Directors at the annual iCrest Symposium.
+I helped optimize the model and ran its assays: the cytokine ELISAs, the scratch migration assay, semi-quantitative RT-PCR for COX-2 and α-SMA, and the gel contraction assay. I also wrote the Results and Discussion for the paper. The work followed a six-week training program at iCrest, and I presented it to an audience including the Board of Directors at the annual iCrest Symposium.
 
 <div class="figure-row">
 {% include figure.html root="projects" dir="icrest-fibroblast-model" n=1 alt="Pranoy presenting a slide on when and why scars form at the iCrest Symposium" caption="Presenting at a research symposium." %}
