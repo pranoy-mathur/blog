@@ -9,13 +9,18 @@ dates: "2026"
 status: "In development. 47 pharmacies visited as of October 2026, aiming for 100+."
 links:
   - { label: "burst-amr.in", url: "https://burst-amr.in" }
+# Card on the homepage: photo, short label on it, and which part to keep.
+thumb: /assets/images/projects/burst/1.png
+thumb_alt: "The BURST map of East Bengaluru pharmacy audits"
+thumb_caption: "Live public dashboard"
+thumb_position: "50% 15%"
 ---
 
 ## Summary
 
 India restricts the sale of many antibiotics without a prescription under Schedule H1, but over-the-counter sales still happen, and they drive resistance. BURST records what actually happens at the pharmacy counter and maps it, to show the gap between the law and real-world access.
 
-{% include figure.html root="projects" dir="burst" n=1 alt="BURST map of East Bengaluru zones, shaded by how many pharmacists agreed to sell antibiotics without a prescription" caption="The BURST map as of October 28, 2026: 10 of 25 pharmacists said yes." %}
+{% include figure.html root="projects" dir="burst" n=1 alt="BURST map of East Bengaluru zones, shaded by how many pharmacists agreed to sell antibiotics without a prescription" caption="Live map of pharmacy audits." %}
 
 ## How it works
 

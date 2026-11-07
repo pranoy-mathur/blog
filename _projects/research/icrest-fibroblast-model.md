@@ -8,6 +8,11 @@ statement: "A human fibroblast model of inflamed, scarring skin, used to test wh
 role: "Research intern, iCrest Biotechnologies. Co-first author (equal contribution)."
 dates: "June 2025 to present"
 status: "Under review at the International Journal of High School Research. CREST Gold Award."
+# Card on the homepage: photo, short label on it, and which part to keep.
+thumb: /assets/images/projects/icrest-fibroblast-model/1.jpg
+thumb_alt: "Pranoy presenting a slide on scar formation"
+thumb_caption: "Presenting at a research symposium"
+thumb_position: "28% 85%"
 ---
 
 ## Summary
@@ -19,8 +24,8 @@ We built an in-vitro model by "licensing" human dermal fibroblasts with inflamma
 My part was the IL-8 ELISA and the scratch migration assay, and I wrote the Results and Discussion for the paper. The work followed a six-week training program at iCrest, and I presented it to an audience including the Board of Directors at the annual iCrest Symposium.
 
 <div class="figure-row">
-{% include figure.html root="projects" dir="icrest-fibroblast-model" n=1 alt="Pranoy presenting a slide on when and why scars form at the iCrest Symposium" caption="Presenting at the iCrest Symposium." %}
-{% include figure.html root="projects" dir="icrest-fibroblast-model" n=2 alt="Pranoy receiving a certificate on stage at the iCrest Symposium" caption="Receiving my certificate." %}
+{% include figure.html root="projects" dir="icrest-fibroblast-model" n=1 alt="Pranoy presenting a slide on when and why scars form at the iCrest Symposium" caption="Presenting at a research symposium." %}
+{% include figure.html root="projects" dir="icrest-fibroblast-model" n=2 alt="Pranoy receiving a certificate on stage at the iCrest Symposium" caption="Recognized at the symposium." %}
 </div>
 
 ## Methods

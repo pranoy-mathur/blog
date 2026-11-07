@@ -6,12 +6,6 @@ anchor: research
 order: 2
 # Lists the project pages in _projects/research/.
 projects: research
-# Optional image beside this section. Leave image_tint: false to show
-# the photo's real colors.
-image: /assets/images/posts/immunology-leishmans-stain/1.jpg
-image_alt: "Leishman-stained blood smear under a microscope, with one white blood cell among red blood cells"
-image_caption: ""
-image_tint: false
 # Big numbers shown at the top of this section. They count up on screen.
 stats:
   - { value: "17,967", label: "phytochemicals filtered for the AcrB screen" }

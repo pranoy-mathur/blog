@@ -737,10 +737,20 @@ $counting-grid: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' wi
 
 // Honors and awards at the end of a section.
 .honors {
-  margin: 2.5rem 0 0;
-  padding-top: 1.5rem;
-  border-top: 1px solid $buff;
-  max-width: $measure;
+  margin: 1.5rem 0 0;
+  padding: 1.5rem 1.75rem 1.1rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba($ink, 0.06), 0 10px 28px -18px rgba($ink, 0.35);
+
+  .honors-list {
+    @media screen and (min-width: 720px) {
+      columns: 2;
+      column-gap: 2.5rem;
+
+      li { break-inside: avoid; }
+    }
+  }
 }
 
 .honors-title {
@@ -920,14 +930,13 @@ $counting-grid: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' wi
   .slot { margin: 0; }
 
   // Small same-size photo tiles, used in homepage sections.
+  // Same-size photo tiles.
   &.is-tiles {
-    grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
-    max-width: 32rem;
-    margin: 1.25rem 0 0.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
 
     img {
       width: 100%;
-      aspect-ratio: 4 / 5;
+      aspect-ratio: 4 / 3;
       object-fit: cover;
     }
 
@@ -1012,21 +1021,8 @@ $counting-grid: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' wi
 
   .page-content .wrapper > * { max-width: none; }
 
-  .site-section {
-    display: grid;
-    grid-template-columns: $rail minmax(0, $main);
-    column-gap: $rail-gap;
-    align-items: start;
-
-    > .statement-block { grid-column: 1 / -1; }
-  }
-
-  // Section titles stay in view while you read the section.
-  .section-rail {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 6rem;
-  }
+  // Sections use the full width: title on top, content below.
+  .site-section { display: block; }
 
   .section-title {
     font-size: 2rem;
@@ -1043,6 +1039,8 @@ $counting-grid: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' wi
     grid-template-columns: 1fr 1fr;
     column-gap: 2.5rem;
   }
+
+  .section-main .post-list { column-gap: 3rem; }
 
   .section-main .post-list > li:nth-child(-n+2),
   .entry-list > .entry:nth-child(-n+2) { border-top: 0; padding-top: 0.25rem; }
@@ -1192,4 +1190,183 @@ $counting-grid: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' wi
 @media (prefers-reduced-motion: reduce) {
   .cell { animation: none; }
   .hero-cells { transition: none; }
+}
+
+
+// ---------- Homepage cards: a photo beside the text ----------
+
+.features {
+  display: grid;
+  gap: 1.25rem;
+  margin: 0.5rem 0 0;
+}
+
+.feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba($ink, 0.06), 0 10px 28px -18px rgba($ink, 0.35);
+
+  @media screen and (min-width: 720px) {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    min-height: 17rem;
+
+    // Photos alternate sides down the page.
+    &:nth-child(even) .feature-media { order: 2; }
+  }
+}
+
+.feature-media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background-color: $slide;
+
+  @media screen and (min-width: 720px) { aspect-ratio: auto; }
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  // Figures and diagrams: show the whole image on white.
+  &.is-contain {
+    background-color: #fff;
+
+    img {
+      object-fit: contain;
+      padding: 1.25rem 1.25rem 3rem;
+      box-sizing: border-box;
+    }
+  }
+
+  // No photo yet: a counting-chamber grid with a few stained cells.
+  &.is-pattern {
+    background-color: $slide;
+    background-image:
+      linear-gradient(rgba($ink, 0.09) 1px, transparent 1px),
+      linear-gradient(90deg, rgba($ink, 0.09) 1px, transparent 1px),
+      linear-gradient(rgba($ink, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba($ink, 0.05) 1px, transparent 1px);
+    background-size: 64px 64px, 64px 64px, 16px 16px, 16px 16px;
+    min-height: 12rem;
+  }
+}
+
+.feature:hover .feature-media img { transform: scale(1.03); }
+
+@media (prefers-reduced-motion: reduce) {
+  .feature-media img { transition: none; }
+  .feature:hover .feature-media img { transform: none; }
+}
+
+.feature-cells {
+  span {
+    position: absolute;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 50%, rgba($safranin, 0.1) 30%, rgba($safranin, 0.32) 68%, rgba($safranin, 0.12) 72%);
+  }
+
+  span:nth-child(1) { top: 18%; left: 20%; }
+  span:nth-child(2) { top: 52%; left: 62%; width: 3.2rem; height: 3.2rem; }
+  span:nth-child(3) { top: 30%; left: 74%; width: 2rem; height: 2rem; }
+  span:nth-child(4) { top: 64%; left: 26%; width: 2.2rem; height: 2.2rem; }
+
+  // One white blood cell with a purple nucleus.
+  span:nth-child(5) {
+    top: 38%;
+    left: 44%;
+    width: 3.4rem;
+    height: 3.4rem;
+    background:
+      radial-gradient(circle at 42% 44%, rgba($ink, 0.55) 0 22%, transparent 24%),
+      radial-gradient(circle at 60% 58%, rgba($ink, 0.5) 0 18%, transparent 20%),
+      rgba($ink, 0.1);
+  }
+}
+
+.feature-chip {
+  position: absolute;
+  left: 0.9rem;
+  bottom: 0.9rem;
+  z-index: 1;
+  max-width: calc(100% - 1.8rem);
+  padding: 0.42rem 0.8rem;
+  border-radius: 999px;
+  background-color: $safranin;
+  color: #fff;
+  font-family: $font-heading;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.25;
+  box-shadow: 0 4px 14px -6px rgba($ink, 0.5);
+}
+
+.feature-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.5rem 1.4rem 1.6rem;
+
+  @media screen and (min-width: 720px) { padding: 2rem 2.25rem; }
+}
+
+.feature-title {
+  font-size: 1.25rem;
+  line-height: 1.3;
+  margin: 0 0 0.7rem;
+
+  @media screen and (min-width: 720px) { font-size: 1.4rem; }
+
+  a,
+  a:visited {
+    color: $ink;
+    text-decoration: none;
+  }
+
+  a:hover { color: $safranin; }
+}
+
+.feature-text {
+  line-height: 1.6;
+
+  p,
+  ul { margin: 0 0 0.6rem; }
+
+  > :last-child { margin-bottom: 0; }
+
+  ul { padding-left: 1.1rem; margin-left: 0; }
+
+  li { margin-bottom: 0.45rem; }
+}
+
+.feature-meta {
+  font-family: $font-heading;
+  font-size: $type-small;
+  color: $graphite;
+}
+
+.feature-more {
+  margin: 1rem 0 0;
+  font-family: $font-heading;
+  font-size: $type-small;
+  font-weight: 600;
+
+  a,
+  a:visited {
+    color: $safranin;
+    text-decoration: none;
+  }
+
+  a:hover { text-decoration: underline; }
 }

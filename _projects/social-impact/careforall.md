@@ -10,11 +10,22 @@ dates: "May 2025 to present"
 status: "Active. Selected to present at the 1M1B Activate Impact Summit at the UN in Geneva (November 2026)."
 links:
   - { label: "careforall.org.in", url: "https://careforall.org.in" }
+# Card on the homepage: photo, short label on it, and which part to keep.
+thumb: /assets/images/features/careforall.jpg
+thumb_alt: "Pranoy high-fiving children at a school"
+thumb_caption: "3,500+ children reached"
+thumb_position: "50% 30%"
 ---
 
 ## Summary
 
 CareForAll runs free medical camps for children in government schools and bridge-school programs, mainly around Whitefield, and buys and distributes the prescribed medicines afterward. Alongside the camps, it runs health awareness sessions so children can look after their own health, hygiene and nutrition.
+
+<div class="figure-row is-tiles">
+{% include figure.html root="projects" dir="careforall" n=1 alt="The CareForAll team holding the CareForAll banner" caption="The team." %}
+{% include figure.html root="projects" dir="careforall" n=2 alt="Pranoy sitting in a circle with children during a health awareness session" caption="Health awareness sessions." %}
+{% include figure.html root="projects" dir="careforall" n=3 alt="Pranoy and a volunteer leading a session in a classroom" caption="In the classroom." %}
+</div>
 
 ## My role
 

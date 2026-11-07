@@ -10,6 +10,11 @@ dates: "2026"
 status: "Accepted at the National High School Journal of Science (October 11, 2026), pending publication. CREST Gold Award."
 links:
   - { label: "Data and code (Zenodo)", url: "https://doi.org/10.5281/zenodo.23356930" }
+# Card on the homepage: photo, short label on it, and how to fit it.
+thumb: /assets/images/projects/acrb-virtual-screening/1.jpg
+thumb_alt: "The top hit docked in the AcrB binding pocket"
+thumb_caption: "Accepted for publication"
+thumb_fit: contain
 ---
 
 ## Summary

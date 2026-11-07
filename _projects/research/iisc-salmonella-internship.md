@@ -5,6 +5,9 @@ statement: "A two-month wet-lab internship studying how Salmonella grows under t
 role: "Research intern, Prof. Dipshikha Chakravortty's lab, Department of Microbiology and Cell Biology, IISc"
 dates: "April to June 2025"
 status: "Completed"
+# Card on the homepage. No photo yet, so a stained-cell panel shows.
+# To add one: thumb: /assets/images/projects/iisc/1.jpg
+thumb_caption: "Indian Institute of Science"
 ---
 
 ## Summary

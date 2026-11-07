@@ -1,0 +1,35 @@
+{%- comment -%}
+  One homepage card: a photo on one side, the text on the other.
+  Parameters:
+    title, url (optional link on the title), body (HTML),
+    image (path in this repo), alt, caption (short label on the photo),
+    position (which part of the photo to keep, e.g. "50% 30%"),
+    fit ("contain" shows the whole image, for figures and diagrams),
+    more_url (optional "Project details" link).
+  With no image, a stained-cell panel shows instead.
+{%- endcomment -%}
+{%- assign ft_file = nil -%}
+{%- if include.image and include.image != "" -%}
+  {%- assign ft_file = site.static_files | where: "path", include.image | first -%}
+{%- endif -%}
+<article class="feature">
+  <div class="feature-media{% unless ft_file %} is-pattern{% endunless %}{% if include.fit == 'contain' %} is-contain{% endif %}">
+    {%- if ft_file -%}
+      <img src="{{ include.image | relative_url }}" alt="{{ include.alt | escape }}" loading="lazy" decoding="async"{% if include.position %} style="object-position: {{ include.position }}"{% endif %}>
+    {%- else -%}
+      <span class="feature-cells" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></span>
+    {%- endif -%}
+    {%- if include.caption and include.caption != "" -%}
+      <span class="feature-chip">{{ include.caption }}</span>
+    {%- endif -%}
+  </div>
+  <div class="feature-body">
+    <h3 class="feature-title">
+      {%- if include.url -%}<a href="{{ include.url | relative_url }}">{{ include.title | escape }}</a>{%- else -%}{{ include.title | escape }}{%- endif -%}
+    </h3>
+    <div class="feature-text">{{ include.body }}</div>
+    {%- if include.more_url -%}
+      <p class="feature-more"><a href="{{ include.more_url | relative_url }}">Project details <span aria-hidden="true">&rarr;</span></a></p>
+    {%- endif -%}
+  </div>
+</article>

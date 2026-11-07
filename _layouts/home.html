@@ -7,7 +7,7 @@ layout: base
 {%- assign home_sections = site.sections | sort: "order" -%}
 <div class="home">
   {%- for s in home_sections -%}
-  <section class="site-section{% if forloop.first %} is-first{% endif %}{% if s.image %} has-figure{% endif %}" id="{{ s.anchor }}" aria-labelledby="{{ s.anchor }}-title">
+  <section class="site-section{% if forloop.first %} is-first{% endif %}" id="{{ s.anchor }}" aria-labelledby="{{ s.anchor }}-title">
 
     {%- if s.kind == "blog" -%}
       {%- assign hero_photo = nil -%}
@@ -53,31 +53,34 @@ layout: base
     {%- else -%}
       <div class="section-rail">
         <h2 class="section-title" id="{{ s.anchor }}-title">{{ s.title | escape }}</h2>
-        {%- if s.image -%}{%- include section-figure.html section=s -%}{%- endif -%}
       </div>
       <div class="section-main">
       {%- if s.stats -%}{%- include stats.html stats=s.stats -%}{%- endif -%}
+      {%- assign s_body = s.content | strip -%}
+      {%- if s_body != "" -%}
       <div class="post-content section-body">
         {{ s.content }}
       </div>
+      {%- endif -%}
       {%- if s.projects -%}
         {%- assign entries = site.projects | where: "section", s.projects | sort: "order" -%}
-        <ul class="entry-list">
+        <div class="features">
           {%- for entry in entries -%}
-          <li class="entry">
-            <h3 class="entry-title"><a href="{{ entry.url | relative_url }}">{{ entry.title | escape }}</a></h3>
-            {%- if entry.statement and entry.statement != "" -%}
-              <p class="entry-statement">{{ entry.statement }}</p>
-            {%- else -%}
-              {%- include placeholder.html label="One-sentence statement" note="Comes from statement: in this project's front matter." -%}
-            {%- endif -%}
-            {%- if entry.status and entry.status != "" -%}
-              <p class="entry-meta">{{ entry.status }}</p>
-            {%- endif -%}
-            <p class="entry-more"><a href="{{ entry.url | relative_url }}">Project details</a></p>
-          </li>
+            {%- capture ft_body -%}
+              {%- if entry.statement and entry.statement != "" -%}<p>{{ entry.statement }}</p>{%- endif -%}
+              {%- if entry.status and entry.status != "" -%}<p class="feature-meta">{{ entry.status }}</p>{%- endif -%}
+            {%- endcapture -%}
+            {%- include feature.html title=entry.title url=entry.url body=ft_body image=entry.thumb alt=entry.thumb_alt caption=entry.thumb_caption position=entry.thumb_position fit=entry.thumb_fit more_url=entry.url -%}
           {%- endfor -%}
-        </ul>
+        </div>
+      {%- endif -%}
+      {%- if s.entries -%}
+        <div class="features">
+          {%- for e in s.entries -%}
+            {%- assign ft_body = e.body | markdownify -%}
+            {%- include feature.html title=e.title body=ft_body image=e.image alt=e.image_alt caption=e.caption position=e.position fit=e.fit -%}
+          {%- endfor -%}
+        </div>
       {%- endif -%}
       {%- if s.honors -%}
         <div class="honors">
