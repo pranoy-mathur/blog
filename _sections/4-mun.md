@@ -3,6 +3,10 @@ title: In the debate room
 nav_title: Debate
 anchor: mun
 order: 4
+# Image beside this section. image_tint: false shows the original colors.
+image: /assets/images/sections/debate.jpg
+image_alt: "Pranoy in a blazer and conference lanyard, holding a flag"
+image_tint: false
 # Honors and awards listed at the end of this section.
 honors:
   - { award: "Best Team (1st place), Harvard Sustainability Impact Summit, with a scholarship to HPAIR", year: "2025" }
@@ -27,3 +31,7 @@ Head Delegate. Best Team (1st place) in 2025, with a scholarship to the HPAIR co
 ### President, Debate and Dialogue Club
 
 Mentored 50+ students in the club, several of whom have gone on to win at national conferences. Named one of MU20 School of Opportunity's 20 Under 20 Debaters in India in 2024. [Read the post](/2024/11/10/MU20-award.html).
+
+<div class="figure-row is-tiles">
+{% include figure.html root="sections" dir="mun" n=1 alt="Pranoy holding the MU20 High School Summit Best Delegate trophy" caption="Best Delegate, MU20 High School Summit 2023." %}
+</div>

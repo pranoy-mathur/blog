@@ -918,6 +918,21 @@ $counting-grid: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' wi
 
   .figure,
   .slot { margin: 0; }
+
+  // Small same-size photo tiles, used in homepage sections.
+  &.is-tiles {
+    grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+    max-width: 32rem;
+    margin: 1.25rem 0 0.5rem;
+
+    img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+    }
+
+    figcaption { font-size: 0.8rem; line-height: 1.4; }
+  }
 }
 
 

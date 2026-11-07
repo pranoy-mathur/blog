@@ -18,6 +18,11 @@ We built an in-vitro model by "licensing" human dermal fibroblasts with inflamma
 
 My part was the IL-8 ELISA and the scratch migration assay, and I wrote the Results and Discussion for the paper. The work followed a six-week training program at iCrest, and I presented it to an audience including the Board of Directors at the annual iCrest Symposium.
 
+<div class="figure-row">
+{% include figure.html root="projects" dir="icrest-fibroblast-model" n=1 alt="Pranoy presenting a slide on when and why scars form at the iCrest Symposium" caption="Presenting at the iCrest Symposium." %}
+{% include figure.html root="projects" dir="icrest-fibroblast-model" n=2 alt="Pranoy receiving a certificate on stage at the iCrest Symposium" caption="Receiving my certificate." %}
+</div>
+
 ## Methods
 
 1. Cultured primary human dermal fibroblasts in DMEM at 37 °C and 5% CO₂.
