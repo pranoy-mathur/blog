@@ -1230,6 +1230,22 @@ $counting-grid: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' wi
   }
 }
 
+// Tall photos (portrait: true): a narrower, taller frame, so a face and
+// whatever the person is holding both stay in view.
+.feature.is-portrait {
+  .feature-media { aspect-ratio: 1 / 1; }
+
+  @media screen and (min-width: 720px) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    min-height: 22rem;
+
+    // Photo on the right: the narrow column moves with it.
+    &:nth-child(even) { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
+
+    .feature-media { aspect-ratio: auto; }
+  }
+}
+
 .feature-media {
   position: relative;
   overflow: hidden;

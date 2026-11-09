@@ -94,7 +94,7 @@ layout: base
               {%- if entry.card_status != nil -%}{%- assign card_status = entry.card_status -%}{%- endif -%}
               {%- if card_status and card_status != "" -%}<p class="feature-meta">{{ card_status }}</p>{%- endif -%}
             {%- endcapture -%}
-            {%- include feature.html title=entry.title url=entry.url body=ft_body image=entry.thumb alt=entry.thumb_alt caption=entry.thumb_caption position=entry.thumb_position fit=entry.thumb_fit more_url=entry.url -%}
+            {%- include feature.html title=entry.title url=entry.url body=ft_body image=entry.thumb alt=entry.thumb_alt caption=entry.thumb_caption position=entry.thumb_position fit=entry.thumb_fit portrait=entry.thumb_portrait more_url=entry.url -%}
           {%- endfor -%}
         </div>
       {%- endif -%}
@@ -102,7 +102,7 @@ layout: base
         <div class="features">
           {%- for e in s.entries -%}
             {%- assign ft_body = e.body | markdownify -%}
-            {%- include feature.html title=e.title body=ft_body image=e.image alt=e.image_alt caption=e.caption position=e.position fit=e.fit -%}
+            {%- include feature.html title=e.title body=ft_body image=e.image alt=e.image_alt caption=e.caption position=e.position fit=e.fit portrait=e.portrait -%}
           {%- endfor -%}
         </div>
       {%- endif -%}

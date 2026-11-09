@@ -5,6 +5,7 @@
     image (path in this repo), alt, caption (short label on the photo),
     position (which part of the photo to keep, e.g. "50% 30%"),
     fit ("contain" shows the whole image, for figures and diagrams),
+    portrait (true for tall photos: a narrower, taller photo frame),
     more_url (optional "Project details" link).
   With no image, a stained-cell panel shows instead.
 {%- endcomment -%}
@@ -12,7 +13,7 @@
 {%- if include.image and include.image != "" -%}
   {%- assign ft_file = site.static_files | where: "path", include.image | first -%}
 {%- endif -%}
-<article class="feature">
+<article class="feature{% if include.portrait %} is-portrait{% endif %}">
   <div class="feature-media{% unless ft_file %} is-pattern{% endunless %}{% if include.fit == 'contain' %} is-contain{% endif %}">
     {%- if ft_file -%}
       <img src="{{ include.image | relative_url }}" alt="{{ include.alt | escape }}" loading="lazy" decoding="async"{% if include.position %} style="object-position: {{ include.position }}"{% endif %}>

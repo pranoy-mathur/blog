@@ -6,6 +6,7 @@ order: 5
 #   caption:  the short label on the photo. Keep it short.
 #   position: which part of the photo to keep when it is cropped to fit,
 #             as "left-right% top-bottom%". "50% 30%" keeps the upper middle.
+#   portrait: true for tall photos. Gives them a narrower, taller frame.
 #   Leave image out for a stained-cell panel instead of a photo.
 entries:
   - title: "Tabla"
@@ -28,7 +29,8 @@ entries:
     image: /assets/images/features/football.jpg
     image_alt: "Pranoy with football trophies at the ISSO Games"
     caption: "National champions"
-    position: "50% 30%"
+    portrait: true
+    position: "50% 85%"
     body: |
       Part of the school team that won ISSO U19 Nationals Gold in football. Captained the football team at the Vibgyor tournament.
   - title: "School leadership"
