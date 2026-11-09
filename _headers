@@ -1,0 +1,3 @@
+# Cloudflare Pages response headers. Keeps the whole site out of search results.
+/*
+  X-Robots-Tag: noindex
