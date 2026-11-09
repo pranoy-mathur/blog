@@ -8,6 +8,11 @@ statement: "A youth-led nonprofit providing free pediatric healthcare and health
 role: "CEO and Head of Operations"
 dates: "May 2025 to present"
 status: "Active. Selected to present at the 1M1B Activate Impact Summit at the UN in Geneva (November 2026)."
+# Selections and press, shown first on the homepage card.
+recognition:
+  - { title: "Selected to present at the United Nations, Geneva", detail: "1M1B Activate Impact Summit, November 2026" }
+  - { title: "Featured in Bangalore Mirror", detail: "August 2026", url: "https://bangaloremirror.indiatimes.com/bangalore/others/empowering-change-bengaluru-teens-grassroots-healthcare-initiative-provides-free-medical-care-to-500-children/articleshow/132839786.cms" }
+card_status: ""
 # Key facts on the homepage card. USD at about Rs 94 to the dollar (November 2026).
 highlights:
   - { value: "2,500+", label: "children reached" }
@@ -20,7 +25,7 @@ links:
 # Card on the homepage: photo, short label on it, and which part to keep.
 thumb: /assets/images/features/careforall.jpg
 thumb_alt: "Pranoy high-fiving children at a school"
-thumb_caption: "2,500+ children reached"
+thumb_caption: "Selected to present at the UN, Geneva"
 thumb_position: "50% 30%"
 ---
 
@@ -55,5 +60,5 @@ CareForAll was started in 2023 by another student, who has since left for colleg
 
 ## Partners and press
 
-- Featured in Bangalore Mirror, August 4, 2026: "Teen inspires change through grassroots healthcare effort" by Iffath Fathima.
-- Selected to present at the 1M1B Activate Impact Summit at the UN in Geneva, November 2026.
+- **Selected to present at the 1M1B Activate Impact Summit at the United Nations in Geneva**, November 2026.
+- **Featured in Bangalore Mirror**, August 4, 2026: ["Teen inspires change through grassroots healthcare effort"](https://bangaloremirror.indiatimes.com/bangalore/others/empowering-change-bengaluru-teens-grassroots-healthcare-initiative-provides-free-medical-care-to-500-children/articleshow/132839786.cms) by Iffath Fathima.

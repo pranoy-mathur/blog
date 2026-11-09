@@ -14,6 +14,9 @@ highlights:
   - { value: "Published", label: "National High School Journal of Science (peer-reviewed), November 2026" }
   - { value: "CREST Gold Award", label: "British Science Association" }
 card_status: ""
+# Extra links on the homepage card, after "Project details".
+card_links:
+  - { label: "Read the paper (NHSJS)", url: "https://nhsjs.com/2026/computational-screening-of-indian-phytochemicals-as-candidate-efflux-pump-inhibitors-of-salmonella-acrb/" }
 links:
   - { label: "Read the paper (NHSJS)", url: "https://nhsjs.com/2026/computational-screening-of-indian-phytochemicals-as-candidate-efflux-pump-inhibitors-of-salmonella-acrb/" }
   - { label: "Data and code (Zenodo)", url: "https://doi.org/10.5281/zenodo.23356930" }

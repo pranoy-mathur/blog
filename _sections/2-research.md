@@ -11,6 +11,6 @@ honors:
   - { award: "CREST Gold Award, British Science Association, for the AcrB screening", year: "2026" }
   - { award: "CREST Gold Award, British Science Association, for the fibroblast model", year: "2026" }
   - { award: "New York Academy of Sciences Project of Distinction, top 10 globally of 100+ teams", year: "2024" }
-  - { award: "Best Paper and Best Presentation, Science Beyond Curriculum", year: "2024" }
+  - { award: "First place in the Essay and Talk categories, Science Beyond Curriculum", year: "2024-25" }
 ---
 

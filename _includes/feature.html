@@ -6,7 +6,8 @@
     position (which part of the photo to keep, e.g. "50% 30%"),
     fit ("contain" shows the whole image, for figures and diagrams),
     portrait (true for tall photos: a narrower, taller photo frame),
-    more_url (optional "Project details" link).
+    more_url (optional "Project details" link),
+    links (optional list of { label, url } shown after "Project details").
   With no image, a stained-cell panel shows instead.
 {%- endcomment -%}
 {%- assign ft_file = nil -%}
@@ -29,8 +30,11 @@
       {%- if include.url -%}<a href="{{ include.url | relative_url }}">{{ include.title | escape }}</a>{%- else -%}{{ include.title | escape }}{%- endif -%}
     </h3>
     <div class="feature-text">{{ include.body }}</div>
-    {%- if include.more_url -%}
-      <p class="feature-more"><a href="{{ include.more_url | relative_url }}">Project details <span aria-hidden="true">&rarr;</span></a></p>
+    {%- if include.more_url or include.links -%}
+      <p class="feature-more">
+        {%- if include.more_url -%}<a href="{{ include.more_url | relative_url }}">Project details <span aria-hidden="true">&rarr;</span></a>{%- endif -%}
+        {%- for l in include.links -%}<a href="{{ l.url }}">{{ l.label | escape }} <span aria-hidden="true">&rarr;</span></a>{%- endfor -%}
+      </p>
     {%- endif -%}
   </div>
 </article>

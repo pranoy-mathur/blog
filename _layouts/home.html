@@ -82,6 +82,13 @@ layout: base
           {%- for entry in entries -%}
             {%- capture ft_body -%}
               {%- if entry.statement and entry.statement != "" -%}<p>{{ entry.statement }}</p>{%- endif -%}
+              {%- if entry.recognition -%}
+                <ul class="feature-recognition">
+                  {%- for r in entry.recognition -%}
+                  <li><strong>{%- if r.url -%}<a href="{{ r.url }}">{{ r.title | escape }}</a>{%- else -%}{{ r.title | escape }}{%- endif -%}</strong> <span>{{ r.detail | escape }}</span></li>
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
               {%- if entry.highlights -%}
                 <dl class="feature-facts">
                   {%- for h in entry.highlights -%}
@@ -94,7 +101,7 @@ layout: base
               {%- if entry.card_status != nil -%}{%- assign card_status = entry.card_status -%}{%- endif -%}
               {%- if card_status and card_status != "" -%}<p class="feature-meta">{{ card_status }}</p>{%- endif -%}
             {%- endcapture -%}
-            {%- include feature.html title=entry.title url=entry.url body=ft_body image=entry.thumb alt=entry.thumb_alt caption=entry.thumb_caption position=entry.thumb_position fit=entry.thumb_fit portrait=entry.thumb_portrait more_url=entry.url -%}
+            {%- include feature.html title=entry.title url=entry.url body=ft_body image=entry.thumb alt=entry.thumb_alt caption=entry.thumb_caption position=entry.thumb_position fit=entry.thumb_fit portrait=entry.thumb_portrait more_url=entry.url links=entry.card_links -%}
           {%- endfor -%}
         </div>
       {%- endif -%}

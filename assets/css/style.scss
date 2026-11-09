@@ -1378,6 +1378,39 @@ $counting-grid: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' wi
   li { margin-bottom: 0.45rem; }
 }
 
+// Selections and press on a project card, above the key facts.
+.feature-recognition {
+  list-style: none;
+  margin: 0.9rem 0 0;
+  padding: 0.7rem 0.9rem;
+  background-color: rgba($buff, 0.55);
+  border-radius: 6px;
+  font-family: $font-heading;
+  font-size: 0.85rem;
+  line-height: 1.4;
+
+  li { margin: 0; }
+  li + li { margin-top: 0.5rem; }
+
+  strong {
+    display: block;
+    font-weight: 600;
+    color: $ink;
+  }
+
+  a,
+  a:visited {
+    color: $ink;
+    text-decoration: underline;
+    text-decoration-color: rgba($ink, 0.35);
+    text-underline-offset: 0.15em;
+  }
+
+  a:hover { color: $safranin; }
+
+  span { color: $graphite; }
+}
+
 // Key facts on a project card: a short bold value over a small label.
 .feature-facts {
   display: grid;
@@ -1414,6 +1447,9 @@ $counting-grid: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' wi
 }
 
 .feature-more {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
   margin: 1rem 0 0;
   font-family: $font-heading;
   font-size: $type-small;

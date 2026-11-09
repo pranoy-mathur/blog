@@ -26,11 +26,11 @@ entries:
   - title: "Harvard Sustainability Impact Summit (HSIS)"
     image: /assets/images/features/hsis.jpg
     image_alt: "Pranoy in a blazer and conference lanyard, holding a flag"
-    caption: "Best team at a Harvard summit"
+    caption: "Most Impactful Team, HSIS 2025"
     portrait: true
     position: "50% 35%"
     body: |
-      Head Delegate. Best Team (1st place) in 2025, with a scholarship to the HPAIR conference at Harvard.
+      Head Delegate. Most Impactful Team in the SDG 6 track (2025), with a scholarship to the HPAIR conference at Harvard.
   - title: "President, Debate and Dialogue Club"
     image: /assets/images/features/mu20.jpg
     image_alt: "Pranoy holding a Best Delegate trophy"
@@ -38,12 +38,13 @@ entries:
     portrait: true
     position: "50% 20%"
     body: |
-      Mentored 50+ students in the club, several of whom have gone on to win at national conferences. Best Delegate at the MU20 High School Summit, a national conference. Named one of MU20 School of Opportunity's 20 Under 20 Debaters in India in 2024. [Read the post](/2024/11/10/MU20-award.html).
+      Mentored 50+ students in the club, several of whom have gone on to win at national conferences. Best Delegate at the MU20 High School Summit, a national conference (2023). Named an MU20 School of Opportunity 20 Under 20 Honoree in 2024, with a magazine feature. [Read the post](/2024/11/10/MU20-award.html).
 # Honors and awards listed at the end of this section.
 honors:
-  - { award: "Best Team (1st place), Harvard Sustainability Impact Summit, with a scholarship to HPAIR", year: "2025" }
+  - { award: "Most Impactful Team (SDG 6 track), Harvard Sustainability Impact Summit, with a scholarship to HPAIR", year: "2025" }
   - { award: "Best Delegate (WHO committee), Oxford MUN India, with a scholarship to Oxford MUN UK", year: "2024" }
   - { award: "Outstanding Delegate (2nd place), Empress Wu Crisis committee, Oxford MUN UK", year: "2024" }
-  - { award: "MU20 School of Opportunity 20 Under 20 Debaters in India", year: "2024" }
-  - { award: "Best Delegate, MU20 High School Summit (national)" }
+  - { award: "MU20 School of Opportunity 20 Under 20 Honoree, with a magazine feature", year: "2024" }
+  - { award: "Best Delegate, Inventure MUN", year: "2024" }
+  - { award: "Best Delegate (IAEA committee), MU20 High School Summit (national)", year: "2023" }
 ---
