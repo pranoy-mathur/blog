@@ -10,7 +10,7 @@ order: 6
 ### Honors and awards
 
 - CREST Gold Award, British Science Association, for both the AcrB screening and the fibroblast model projects (2026)
-- World Topper, Cambridge AS Level Mathematics, 100/100
+- Cambridge AS Level Mathematics, 100/100
 - Cambridge ICE Award with Distinction
 - Best Team (1st place), Harvard Sustainability Impact Summit, with a scholarship to HPAIR (2025)
 - Best Delegate (WHO committee), Oxford MUN India, with a scholarship to Oxford MUN UK (2024)

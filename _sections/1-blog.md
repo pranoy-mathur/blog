@@ -11,7 +11,7 @@ kind: blog
 roles: []
 # photo: put the file in assets/images/ and give its path, e.g.
 #   photo: /assets/images/pranoy.jpg
-photo: /assets/images/hero/pranoy.jpg
+photo: ""
 photo_alt: "Pranoy Mathur at the Harvard Sustainability Impact Summit"
 # Optional single sentence under your name (and under the roles, if any).
 statement: "In the lab, in the community, in the debate room, on the field, and on stage."

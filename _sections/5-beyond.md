@@ -43,7 +43,7 @@ entries:
       - **Academic Prefect (2024 to 2025):** one of 2 selected from a class of 120. Ran study-skills workshops for 150+ junior students and rebuilt the school-wide StudyBuddy peer-teaching program.
 # Honors and awards listed at the end of this section.
 honors:
-  - { award: "World Topper, Cambridge AS Level Mathematics, 100/100", year: "2026" }
+  - { award: "Cambridge AS Level Mathematics, 100/100", year: "2026" }
   - { award: "Cambridge AS Level: A in all four subjects, 2nd in a grade of 116", year: "2026" }
   - { award: "Cambridge IGCSE: 9 A* and 1 A, 2nd in the grade", year: "2025" }
   - { award: "Cambridge ICE Award with Distinction" }
