@@ -82,7 +82,17 @@ layout: base
           {%- for entry in entries -%}
             {%- capture ft_body -%}
               {%- if entry.statement and entry.statement != "" -%}<p>{{ entry.statement }}</p>{%- endif -%}
-              {%- if entry.status and entry.status != "" -%}<p class="feature-meta">{{ entry.status }}</p>{%- endif -%}
+              {%- if entry.highlights -%}
+                <dl class="feature-facts">
+                  {%- for h in entry.highlights -%}
+                  <div class="fact"><dt>{{ h.value | escape }}</dt><dd>{{ h.label | escape }}</dd></div>
+                  {%- endfor -%}
+                </dl>
+              {%- endif -%}
+              {%- comment -%} card_status replaces status on the card only; "" hides it. {%- endcomment -%}
+              {%- assign card_status = entry.status -%}
+              {%- if entry.card_status != nil -%}{%- assign card_status = entry.card_status -%}{%- endif -%}
+              {%- if card_status and card_status != "" -%}<p class="feature-meta">{{ card_status }}</p>{%- endif -%}
             {%- endcapture -%}
             {%- include feature.html title=entry.title url=entry.url body=ft_body image=entry.thumb alt=entry.thumb_alt caption=entry.thumb_caption position=entry.thumb_position fit=entry.thumb_fit more_url=entry.url -%}
           {%- endfor -%}

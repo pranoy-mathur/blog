@@ -8,6 +8,12 @@ statement: "A computational screen of Indian medicinal plant compounds against A
 role: "Sole author"
 dates: "2026"
 status: "Published in a peer-reviewed journal, the National High School Journal of Science (NHSJS), November 2026. CREST Gold Award."
+# Key facts on the homepage card. card_status: "" hides the status line there,
+# since these facts already say it. The project page still shows status.
+highlights:
+  - { value: "Published", label: "National High School Journal of Science (peer-reviewed), November 2026" }
+  - { value: "CREST Gold Award", label: "British Science Association" }
+card_status: ""
 links:
   - { label: "Read the paper (NHSJS)", url: "https://nhsjs.com/2026/computational-screening-of-indian-phytochemicals-as-candidate-efflux-pump-inhibitors-of-salmonella-acrb/" }
   - { label: "Data and code (Zenodo)", url: "https://doi.org/10.5281/zenodo.23356930" }

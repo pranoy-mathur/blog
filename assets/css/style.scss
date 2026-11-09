@@ -1362,6 +1362,35 @@ $counting-grid: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' wi
   li { margin-bottom: 0.45rem; }
 }
 
+// Key facts on a project card: a short bold value over a small label.
+.feature-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem 1.25rem;
+  margin: 0.9rem 0 0.9rem;
+
+  .fact {
+    border-left: 2px solid $buff;
+    padding-left: 0.65rem;
+  }
+
+  dt {
+    font-family: $font-heading;
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.25;
+    color: $ink;
+  }
+
+  dd {
+    margin: 0.1rem 0 0;
+    font-family: $font-heading;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    color: $graphite;
+  }
+}
+
 .feature-meta {
   font-family: $font-heading;
   font-size: $type-small;

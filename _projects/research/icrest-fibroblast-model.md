@@ -8,6 +8,11 @@ statement: "A human fibroblast model of inflamed, scarring skin, used to test wh
 role: "Research intern, iCrest Biotechnologies. Co-first author (equal contribution)."
 dates: "June 2025 to present"
 status: "Under review at the International Journal of High School Research. CREST Gold Award."
+# Key facts on the homepage card. card_status: "" hides the status line there.
+highlights:
+  - { value: "Under review", label: "International Journal of High School Research" }
+  - { value: "CREST Gold Award", label: "British Science Association" }
+card_status: ""
 # Card on the homepage: photo, short label on it, and which part to keep.
 thumb: /assets/images/projects/icrest-fibroblast-model/1.jpg
 thumb_alt: "Pranoy presenting a slide on scar formation"

@@ -6,12 +6,6 @@ anchor: research
 order: 2
 # Lists the project pages in _projects/research/.
 projects: research
-# Big numbers shown at the top of this section. They count up on screen.
-stats:
-  - { value: "17,967", label: "phytochemicals filtered for the AcrB screen" }
-  - { value: "863", label: "compounds docked against AcrB" }
-  - { value: "100", unit: "ns", label: "molecular dynamics simulation" }
-  - { value: "2", label: "CREST Gold Awards" }
 # Honors and awards listed at the end of this section.
 honors:
   - { award: "CREST Gold Award, British Science Association, for the AcrB screening", year: "2026" }

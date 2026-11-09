@@ -8,12 +8,19 @@ statement: "A youth-led nonprofit providing free pediatric healthcare and health
 role: "CEO and Head of Operations"
 dates: "May 2025 to present"
 status: "Active. Selected to present at the 1M1B Activate Impact Summit at the UN in Geneva (November 2026)."
+# Key facts on the homepage card. USD at about Rs 94 to the dollar (November 2026).
+highlights:
+  - { value: "2,500+", label: "children reached" }
+  - { value: "500+", label: "free check-ups and medicines" }
+  - { value: "2,000+", label: "people reached by the AMR program" }
+  - { value: "15+", label: "NGO and hospital partners" }
+  - { value: "Rs 2 lakh+", label: "raised (about $2,100)" }
 links:
   - { label: "careforall.org.in", url: "https://careforall.org.in" }
 # Card on the homepage: photo, short label on it, and which part to keep.
 thumb: /assets/images/features/careforall.jpg
 thumb_alt: "Pranoy high-fiving children at a school"
-thumb_caption: "3,500+ children reached"
+thumb_caption: "2,500+ children reached"
 thumb_position: "50% 30%"
 ---
 
@@ -39,7 +46,7 @@ CareForAll was started in 2023 by another student, who has since left for colleg
 
 ## Reach
 
-- 3,500+ children reached to date
+- 2,500+ children reached to date
 - 500+ children given free check-ups and medicines
 - 2,000+ people reached through the AMR program
 - Rs 2 lakh+ raised
