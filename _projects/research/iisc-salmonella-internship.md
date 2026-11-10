@@ -1,7 +1,7 @@
 ---
 title: Salmonella growth kinetics internship, IISc Bangalore
 order: 3
-statement: "A six-week wet-lab internship, secured through cold outreach, studying how Salmonella grows under the stresses it meets in the gut."
+statement: "A wet-lab internship, secured through cold outreach, studying how Salmonella grows under the stresses it meets in the gut."
 role: "Research intern, Prof. Dipshikha Chakravortty's lab, Department of Microbiology and Cell Biology, IISc"
 dates: "April to May 2025"
 status: "Completed"
